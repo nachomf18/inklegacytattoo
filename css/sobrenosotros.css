@@ -1,0 +1,32 @@
+@import url('/css/global.css');
+
+section {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    grid-template-rows: 100vh;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.imagen-estudio {
+    background-image: url(/img/hero.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.contenido {
+    padding: 0 200px;
+}
+
+/* Pseudoclasses and Elements */
+a:hover, a:focus {
+    color: var(--old-gold);
+}
+
+button:hover {
+    background-color: var(--old-gold);
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
