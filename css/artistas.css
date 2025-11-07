@@ -1,16 +1,56 @@
 @import url('/css/global.css');
 
-button {
-    position: absolute;
-    top: 50%;
+section {
+    margin-bottom: 80px;
 }
+
 
 .carrusel-images {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 33.33%);
 }
 
 .carrusel-images img {
-    max-width: 100%;
-    height: 100%;
+    filter: saturate(0);
+    width: 100%;
+    height: 100vh;
+}
+
+.carrusel-btn {
+    background-color: transparent;
+    border: 3px solid var(--bone-white);
+    color: var(--bone-white);
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    padding: 0;
+}
+
+#left {
+    position: absolute;
+    top: 50%;   
+    left: 30px;
+}
+
+#right {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+}
+
+/* Pseudoclasses */
+.carrusel-btn:hover {
+    border-color: var(--old-gold);
+    color: var(--carbon-black);
+    box-shadow: none;
+}
+
+.carrusel-images img:hover {
+    filter: saturate(1);
+    transition: filter 0.3s ease-in-out;
+    cursor: pointer;
 }
