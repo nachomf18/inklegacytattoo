@@ -19,14 +19,3 @@ section {
 .contenido {
     padding: 0 200px;
 }
-
-/* Pseudoclasses and Elements */
-a:hover, a:focus {
-    color: var(--old-gold);
-}
-
-button:hover {
-    background-color: var(--old-gold);
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}

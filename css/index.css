@@ -74,10 +74,6 @@ section {
 }
 
 /* Pseudoclasses */
-a:hover, a:focus {
-    color: var(--old-gold);
-}
-
 section:first-of-type {
     padding: 0;
     margin: 0;
@@ -86,10 +82,4 @@ section:first-of-type {
 .section-images a:hover {
     filter: saturate(1);
     transition: all 0.3s ease
-}
-
-button:hover {
-    background-color: var(--old-gold);
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
 }

@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artista</title>
+    <link rel="stylesheet" href="../css/perfilartista.css">
 </head>
 <body>
     <!--Cabecera-->
     <header>
         <nav>
-            <a href="index.html"><img src="../img/logo.png" alt="Logo Ink Legacy Tattoo Studio" width="150" height="150"></a>
+            <a href="index.html"><img src="../img/logo.png" alt="Logo Ink Legacy Tattoo Studio" height="90"></a>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobrenosotros.html">Sobre nosotros</a></li>
-                <li><a href="artistas.html">Artistas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+                <li><a href="artistas.html">ARTISTAS</a></li>
+                <li><a href="contacto.html">CONTACTO</a></li>
             </ul>
         </nav>
     </header>
@@ -22,11 +23,9 @@
     <main>
         <!--Sección Datos Artista-->
         <section>
-            <div>
-                <img src="../img/tatuadores/6.png" alt="Foto de Rubén Gómez" width="500" height="500">
-            </div>
+            <div class="imagen-artista"></div>
 
-            <div>
+            <div class="contenido">
                 <h1>RUBÉN GÓMEZ</h1>
                 <h2>@rubeng_tattoo</h2>
                 <p>Rubén Gómez es el corazón y el alma de Ink Legacy. Con más de quince años de dedicación a la tinta, su nombre es sinónimo de maestría y versatilidad. Rubén ha perfeccionado su arte hasta dominar dos de los estilos más influyentes y técnicamente exigentes del tatuaje: el Old School y el Realismo.
@@ -39,11 +38,8 @@
                 </p>
                 <button>Reserva cita con Rubén</button>  
             </div>
-        </section>
-
-        <!--Sección Tatuajes Artista-->
-        <section>
-            <div>
+            
+            <div class="galeria-tatuajes">
                 <img src="../img/tatuajes/tattoo1.jpg" alt="Tatuaje de Rubén Gómez" width="500" height="500">
                 <img src="../img/tatuajes/tattoo2.jpg" alt="Tatuaje de Rubén Gómez" width="500" height="500">
                 <img src="../img/tatuajes/tattoo3.jpg" alt="Tatuaje de Rubén Gómez" width="500" height="500">
@@ -51,26 +47,64 @@
                 <img src="../img/tatuajes/tattoo5.webp" alt="Tatuaje de Rubén Gómez" width="500" height="500">
                 <img src="../img/tatuajes/tattoo6.webp" alt="Tatuaje de Rubén Gómez" width="500" height="500">
             </div>
+
+            <button id="backButton" onclick="window.location.href='/html/artistas.html'">&#8617; ATRÁS</button>
         </section>
+
+        <!--Sección Tatuajes Artista-->
     </main>
 
     <!--Pie de página-->
     <footer>
-        <div>
-            <p>© 2025 INK LEGACY</p>|
+        <div class="legal-info">
+            <h4>© 2025 INK LEGACY</h4>|
             <a href="#">POLÍTICA DE COOKIES</a>|
             <a href="#">POLÍTICA DE PRIVACIDAD</a>
         </div>
 
-        <div>
+        <div class="contact-info">
             <a href="https://maps.app.goo.gl/Qi53svSpk2oMX4r38">CALLE DE PIZARRO, 3 <br> 28004, MADRID</a>
             <a href="tel:+34654412700">+34 654 41 27 00</a>
         </div>
 
-        <div>
-            <a href="https://www.pinterest.com/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg></a>
-            <a href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-pinterest"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 0 1 -8.512 18.023l2.364 -5.315a3.5 3.5 0 0 0 2.398 .952c2.708 0 4.75 -2.089 4.75 -5a6 6 0 1 0 -11.64 2.041a1 1 0 1 0 1.88 -.682a4 4 0 1 1 7.76 -1.36c0 1.818 -1.156 3.001 -2.75 3.001c-.609 0 -1.153 -.361 -1.478 -1.022l1.142 -2.572a1 1 0 0 0 -1.828 -.812l-4.392 9.882a10 10 0 0 1 -4.694 -8.476l.005 -.324a10 10 0 0 1 14.995 -8.336" /></svg></a>
+        <div class="social-media">
+            <a href="https://www.pinterest.com/"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg></a>
+            <a href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-pinterest"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 0 1 -8.512 18.023l2.364 -5.315a3.5 3.5 0 0 0 2.398 .952c2.708 0 4.75 -2.089 4.75 -5a6 6 0 1 0 -11.64 2.041a1 1 0 1 0 1.88 -.682a4 4 0 1 1 7.76 -1.36c0 1.818 -1.156 3.001 -2.75 3.001c-.609 0 -1.153 -.361 -1.478 -1.022l1.142 -2.572a1 1 0 0 0 -1.828 -.812l-4.392 9.882a10 10 0 0 1 -4.694 -8.476l.005 -.324a10 10 0 0 1 14.995 -8.336" /></svg></a>
         </div>
     </footer>
+
+    <script>
+        const tatuadores = [
+            {
+                id: 1,
+                nombre: "Rubén Gómez",
+                instagram: "@rubeng_tattoo",
+                descripcion: "Rubén Gómez es el corazón y el alma de Ink Legacy. Con más de quince años de dedicación a la tinta, su nombre es sinónimo de maestría y versatilidad. Rubén ha perfeccionado su arte hasta dominar dos de los estilos más influyentes y técnicamente exigentes del tatuaje: el Old School y el Realismo. <br><br>"
+                + "Esta dualidad le permite moverse con una soltura excepcional entre la audacia de las líneas gruesas y los colores vibrantes del tatuaje tradicional y la precisión milimétrica y los matices sutiles del realismo fotográfico. Su profundo conocimiento de la historia del tatuaje le permite crear piezas de Old School auténticas y llenas de carácter, mientras que su técnica depurada da vida a retratos y escenas que parecen saltar de la piel. <br><br>"
+                + "Para Rubén, cada tatuaje es una colaboración y un compromiso con la excelencia. Su experiencia no solo garantiza una obra de arte impecable, sino también una guía experta para cada cliente que busca plasmar una idea duradera. <br><br>"
+                + "Ponerse en manos de Rubén es confiar en años de experiencia, una técnica impecable y una visión artística que transforma cualquier idea en una pieza de arte atemporal. <br><br>",
+                imagen: "/img/tatuadores/6.png",
+                tatuajes: [
+                    "/img/tatuajes/tattoo1.jpg",
+                    "/img/tatuajes/tattoo2.jpg",
+                    "/img/tatuajes/tattoo3.jpg",
+                    "/img/tatuajes/tattoo4.webp",
+                    "/img/tatuajes/tattoo5.webp",
+                    "/img/tatuajes/tattoo6.webp"
+                ]
+            }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const artistaId = parseInt(urlParams.get('id'));
+
+        const tatuador = tatuadores.find(tatuador => tatuador.id === artistaId);
+
+        document.querySelector('h1').textContent = tatuador.nombre;
+        document.querySelector('h2').textContent = tatuador.instagram;
+        document.querySelector('p').innerHTML = tatuador.descripcion;
+        document.querySelector('.imagen-artista').style.backgroundImage = `url(${tatuador.imagen})`;
+        document.querySelector('button').textContent = `Reserva cita con ${tatuador.nombre.split(' ')[0]}`;
+    </script>
 </body>
 </html>
