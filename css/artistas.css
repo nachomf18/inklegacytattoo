@@ -4,15 +4,24 @@ section {
     margin-bottom: 80px;
 }
 
+.carrusel-container {
+    position: relative;
+    overflow: hidden;
+}
 
 .carrusel-images {
-    display: grid;
-    grid-template-columns: repeat(3, 33.33%);
+    display: flex;
+    gap: 0;
+    transition: transform 0.4s ease-in-out;
+    will-change: transform;
 }
 
 .carrusel-images img {
     filter: saturate(0);
-    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% / 3);
+    max-width: calc(100% / 3);
     height: 100vh;
 }
 
@@ -28,6 +37,7 @@ section {
     justify-content: center;
     border-radius: 0;
     padding: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 #left {
@@ -40,6 +50,16 @@ section {
     position: absolute;
     top: 50%;
     right: 30px;
+}
+
+#left[disabled] {
+    transform: translateX(-200%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#right[disabled] {
+    transform: translateX(200%);
+    transition: transform 0.3s ease-in-out;
 }
 
 /* Pseudoclasses */
