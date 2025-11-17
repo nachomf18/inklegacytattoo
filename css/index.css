@@ -38,10 +38,27 @@ section {
 .section-images img {
     width: 100%;
     height: 100%;
+    filter: brightness(0.8);
 }
 
 .section-images a {
     filter: saturate(0);
+}
+
+.artist {
+    position: relative;
+}
+
+.text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bone-white);
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .cards-container {
@@ -77,6 +94,11 @@ section {
 section:first-of-type {
     padding: 0;
     margin: 0;
+}
+
+.artist:hover .text {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .section-images a:hover {
