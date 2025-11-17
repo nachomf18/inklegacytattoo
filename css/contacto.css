@@ -1,7 +1,7 @@
 @import url('/css/global.css');
 
 section {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     height: 100vh;
 }
 
@@ -69,15 +69,27 @@ select {
     background-color: var(--bone-white);
 }
 
+option {
+    background-color: var(--bone-white);
+}
+ 
+.mapa {
+    height: 100%;
+    border-radius: 10px;
+    padding: 0 60px;
+}
+
+iframe {
+    width: 100%;
+    height: 70vh;
+    border-radius: 20px;
+}
+
+/* Pseudoclasses */
 select:focus {
     outline: none;
 }
 
-option {
-    background-color: var(--bone-white);
-}
-
-/* Pseudoclasses */
 input:focus{
     outline: none;
     border-bottom: 2px solid var(--old-gold);
