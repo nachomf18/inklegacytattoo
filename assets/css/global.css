@@ -9,7 +9,7 @@
 
 @font-face {
     font-family: 'Oswald';
-    src: url('/fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+    src: url('/assets/fonts/Oswald.ttf') format('truetype');
 }
 
 body {
