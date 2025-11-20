@@ -55,20 +55,16 @@
     
                 <div class="form">
                     <form>
-                        <label for="name">Nombre y apellidos *</label>
-                        <br>
                         <input type="text" id="name" required>
-                        <br>
-                        <label for="email">Correo electrónico *</label>
+                        <label for="name" class="placeholder">Nombre y apellidos *</label>
                         <br>
                         <input type="email" id="email" required>
+                        <label for="email" class="placeholder">Correo electrónico *</label>
                         <br>
-                        <label for="subject">Asunto *</label>
-                        <br>
-                        <input type="text" id="subject">
+                        <input type="text" id="subject" required>
+                        <label for="subject" class="placeholder">Asunto *</label>
                         <br>
                         <label for="message">Mensaje *</label>
-                        <br>
                         <textarea id="message"></textarea>
                         <br>
                         <label for="artist">Artista</label>
@@ -77,9 +73,9 @@
                             <option value="" selected>-- Seleccione un artista --</option>
                             <option value="diego">Diego Navarro</option>
                             <option value="claudia">Claudia Reyes</option>
-                            <option value="alvaro">Alvaro Mendoza</option>
+                            <option value="álvaro">Álvaro Mendoza</option>
                             <option value="martina">Martina Sánchez</option>
-                            <option value="ruben">Rubén Gómez</option>
+                            <option value="rubén">Rubén Gómez</option>
                             <option value="marcos">Marcos Lira</option>
                         </select>
                         <br><br>
@@ -115,5 +111,25 @@
             <a href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-pinterest"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 0 1 -8.512 18.023l2.364 -5.315a3.5 3.5 0 0 0 2.398 .952c2.708 0 4.75 -2.089 4.75 -5a6 6 0 1 0 -11.64 2.041a1 1 0 1 0 1.88 -.682a4 4 0 1 1 7.76 -1.36c0 1.818 -1.156 3.001 -2.75 3.001c-.609 0 -1.153 -.361 -1.478 -1.022l1.142 -2.572a1 1 0 0 0 -1.828 -.812l-4.392 9.882a10 10 0 0 1 -4.694 -8.476l.005 -.324a10 10 0 0 1 14.995 -8.336" /></svg></a>
         </div>
     </footer>
+
+    <script>
+        const nombre = new URLSearchParams(window.location.search).get('artista');
+
+        if (nombre) {
+            document.querySelector('select').value = nombre;
+        }
+
+        form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            const p = document.createElement('p');
+            p.textContent = '¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.';
+            p.style.marginTop = '20px';
+            p.style.fontSize = '1em';
+            
+            form.appendChild(p);
+            form.reset();
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

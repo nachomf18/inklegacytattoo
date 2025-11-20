@@ -40,12 +40,20 @@ label {
     font-size: 18px;
 }
 
+.placeholder {
+    padding-left: 2px;
+    position: absolute;
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
 input, textarea {
     width: 100%;
     background-color: var(--bone-white);
     border: none;
     font-family: 'Roboto', monospace;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -94,6 +102,13 @@ input:focus{
     outline: none;
     border-bottom: 2px solid var(--old-gold);
     transition: border-bottom 0.3s ease-in-out;
+}
+
+input:focus + .placeholder, input:valid + .placeholder {
+    transform: translateY(-70px);
+    color: var(--old-gold);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
 }
 
 textarea:focus{
