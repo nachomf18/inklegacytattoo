@@ -63,8 +63,9 @@ section {
 
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 20%);
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    margin: 0 auto;
     gap: 50px;
     margin-top: 50px;
 }
@@ -104,4 +105,48 @@ section:first-of-type {
 .section-images a:hover {
     filter: saturate(1);
     transition: all 0.3s ease
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .section-content {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .section-images {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .section-content {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .section-images {
+        grid-template-columns: 1fr;
+    }
+
+    #artist_images {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 auto;
+        width: 90%;
+        gap: 25px;
+    }
+
+    #third-card {
+        grid-column: 1 / 3;
+    }
 }

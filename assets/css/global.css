@@ -17,6 +17,7 @@ body {
     background-color: var(--bone-white);
     color: var(--carbon-black);
     font-family: 'Oswald', sans-serif;
+    width: 100%;
 }
 
 /* Typography */
@@ -89,6 +90,10 @@ ul {
     gap: 40px;
 }
 
+#menu-icon {
+    display: none;
+}
+
 nav a {
     font-weight: 500;
     font-size: 20px;
@@ -145,4 +150,64 @@ button:hover {
     background-color: var(--old-gold);
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    nav {
+        padding: 5px 20px;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(13, 13, 13, 0.85);
+        right: inherit;
+        left: inherit;
+        padding: 0 20px;
+        align-items: center;
+        top: 89px;
+        height: 0;
+        overflow: hidden;
+    }
+
+    @keyframes open-menu {
+        0% {
+            height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        100% {
+            height: 250px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+    
+    @keyframes close-menu {
+        0% {
+            height: 250px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        100% {
+            height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .legal-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+    }
 }
