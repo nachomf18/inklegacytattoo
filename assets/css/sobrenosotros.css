@@ -17,5 +17,36 @@ section {
 }
 
 .contenido {
-    padding: 0 200px;
+    padding: 0 100px;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenido {
+        padding: 0 50px;
+    }
+
+    .imagen-estudio {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenido {
+        padding: 0 50px;
+    }
+
+    .imagen-estudio {
+        height: 100vh;
+    }
 }
