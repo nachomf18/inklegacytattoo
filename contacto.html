@@ -17,6 +17,7 @@
                 <li><a href="artistas.html">ARTISTAS</a></li>
                 <li><a href="contacto.html">CONTACTO</a></li>
             </ul>
+            <img src="/assets/img/menu.svg" alt="Menú de navegación móvil" id="menu-icon" height="40">
         </nav>
     </header>
 
@@ -88,7 +89,7 @@
         <!--Mapa Interactivo-->
         <section>
             <div class="mapa">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.37215894457!2d-3.7089194234751592!3d40.42275745527156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42286331f2caeb%3A0x3c08a4973a842c96!2sC.%20de%20Pizarro%2C%203%2C%20Centro%2C%2028004%20Madrid!5e0!3m2!1ses!2ses!4v1760514505737!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.37215894457!2d-3.7089194234751592!3d40.42275745527156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42286331f2caeb%3A0x3c08a4973a842c96!2sC.%20de%20Pizarro%2C%203%2C%20Centro%2C%2028004%20Madrid!5e0!3m2!1ses!2ses!4v1760514505737!5m2!1ses!2ses" width="600" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
     </main>
@@ -112,24 +113,7 @@
         </div>
     </footer>
 
-    <script>
-        const nombre = new URLSearchParams(window.location.search).get('artista');
-
-        if (nombre) {
-            document.querySelector('select').value = nombre;
-        }
-
-        form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            const p = document.createElement('p');
-            p.textContent = '¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.';
-            p.style.marginTop = '20px';
-            p.style.fontSize = '1em';
-            
-            form.appendChild(p);
-            form.reset();
-            e.preventDefault();
-        });
-    </script>
+    <script src="/assets/js/navBar.js"></script>
+    <script src="/assets/js/form.js"></script>
 </body>
 </html>

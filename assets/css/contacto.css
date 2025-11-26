@@ -116,3 +116,31 @@ textarea:focus{
     background-image: repeating-linear-gradient(to bottom, transparent, transparent 38px, var(--old-gold) 40px);
     transition: background-image 0.3s ease-in-out;
 }
+
+/* Media Queries */
+@media (max-width: 767px) {
+    section {
+        height: auto;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        margin-top: 150px;
+    }
+
+    .mapa {
+        border-radius: 10px;
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    section {
+        height: auto;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        margin-top: 150px;
+    }
+}
