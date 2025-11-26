@@ -17,6 +17,7 @@
                 <li><a href="artistas.html">ARTISTAS</a></li>
                 <li><a href="contacto.html">CONTACTO</a></li>
             </ul>
+            <img src="/assets/img/menu.svg" alt="Menú de navegación móvil" id="menu-icon" height="40">
         </nav>
     </header>
 
@@ -65,34 +66,7 @@
         </div>
     </footer>
 
-    <script>
-        const contenedorImg = document.querySelector('.carrusel-images');
-        const listaImg = Array.from(contenedorImg.querySelectorAll('a'));
-        const btnIzq = document.getElementById('left');
-        const btnDer = document.getElementById('right');
-
-        const maxIndex = listaImg.length - 3;
-        let index = 0;
-
-        function update() {
-            const mover = -(index * (100 / 3));
-            contenedorImg.style.transform = `translateX(${mover}%)`;
-
-            btnIzq.disabled = (index == 0);
-            btnDer.disabled = (index == maxIndex);
-        }
-
-        btnIzq.addEventListener('click', () => {
-            index -= 1;
-            update();
-        });
-
-        btnDer.addEventListener('click', () => {
-            index += 1;
-            update();
-        });
-
-        update();
-    </script>
+    <script src="/assets/js/navBar.js"></script>
+    <script src="/assets/js/carrusel.js"></script>
 </body>
 </html>
