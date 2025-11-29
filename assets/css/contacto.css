@@ -104,7 +104,14 @@ input:focus{
     transition: border-bottom 0.3s ease-in-out;
 }
 
-input:focus + .placeholder, input:valid + .placeholder {
+input:focus + .placeholder {
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+input:valid + .placeholder {
     transform: translateY(-70px);
     color: var(--old-gold);
     font-size: 16px;
