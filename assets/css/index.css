@@ -97,12 +97,12 @@ section:first-of-type {
     margin: 0;
 }
 
-.artist:hover .text {
+.artist:hover .text, .artist:focus-within .text {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
 
-.section-images a:hover {
+.section-images a:hover, .section-images a:focus {
     filter: saturate(1);
     transition: all 0.3s ease
 }

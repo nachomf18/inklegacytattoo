@@ -68,13 +68,13 @@ section {
 }
 
 /* Pseudoclasses */
-.carrusel-btn:hover {
+.carrusel-btn:hover, .carrusel-btn:focus {
     border-color: var(--old-gold);
     color: var(--carbon-black);
     box-shadow: none;
 }
 
-.carrusel-images img:hover {
+.carrusel-images a:hover img, .carrusel-images a:focus img {
     filter: saturate(1);
     transition: filter 0.3s ease-in-out;
     cursor: pointer;
