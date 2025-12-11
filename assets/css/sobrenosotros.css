@@ -9,7 +9,7 @@ section {
 }
 
 .imagen-estudio {
-    background-image: url(./assets/img/estudio/sala-interior.png);
+    background-image: url(../img/estudio/sala-interior.png);
     background-size: cover;
     background-position: center;
     width: 100%;
