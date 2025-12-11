@@ -48,11 +48,9 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && index > 0) {
         index -= 1;
         update();
-        btnIzq.focus();
     } else if (e.key === 'ArrowRight' && index < maxIndex) {
         index += 1;
         update();
-        btnDer.focus();
     }
 });
 

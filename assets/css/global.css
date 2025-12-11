@@ -137,8 +137,8 @@ footer {
     gap: 5px;
 }
 
-.social-media a {
-    height: 40px;
+.social-media a img {
+    filter: invert(99%) sepia(2%) saturate(134%) hue-rotate(254deg) brightness(118%) contrast(92%);
 }
 
 /* Pseudoclasses */
@@ -152,10 +152,18 @@ button:hover, button:focus {
     transition: all 0.3s ease;
 }
 
+.social-media a:hover img, .social-media a:focus img {
+    filter: invert(86%) sepia(99%) saturate(367%) hue-rotate(309deg) brightness(83%) contrast(83%);
+}
+
 /* Media Queries */
 @media (max-width: 767px) {
     nav {
         padding: 5px 20px;
+    }
+
+    nav a img {
+        height: 70px;
     }
 
     #menu-icon {
@@ -169,9 +177,9 @@ button:hover, button:focus {
         background-color: rgba(13, 13, 13, 0.85);
         right: inherit;
         left: inherit;
+        top: 69px;
         padding: 0 20px;
         align-items: center;
-        top: 89px;
         height: 0;
         overflow: hidden;
     }

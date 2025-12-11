@@ -33,7 +33,6 @@ section {
 .carrusel-btn {
     background-color: transparent;
     border: 3px solid var(--bone-white);
-    color: var(--bone-white);
     cursor: pointer;
     width: 80px;
     height: 80px;
@@ -57,6 +56,10 @@ section {
     right: 30px;
 }
 
+#left img, #right img {
+    filter: invert(99%) sepia(2%) saturate(134%) hue-rotate(254deg) brightness(118%) contrast(92%);
+}
+
 #left[disabled] {
     transform: translateX(-200%);
     transition: transform 0.3s ease-in-out;
@@ -70,8 +73,11 @@ section {
 /* Pseudoclasses */
 .carrusel-btn:hover, .carrusel-btn:focus {
     border-color: var(--old-gold);
-    color: var(--carbon-black);
     box-shadow: none;
+}
+
+#left:hover img, #left:focus img, #right:hover img, #right:focus img {
+    filter: invert(0%) sepia(3%) saturate(3957%) hue-rotate(58deg) brightness(111%) contrast(90%);
 }
 
 .carrusel-images a:hover img, .carrusel-images a:focus img {
