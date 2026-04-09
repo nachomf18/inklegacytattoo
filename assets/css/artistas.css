@@ -1,0 +1,117 @@
+@import url('./global.css');
+
+section {
+    margin-bottom: 50px;
+}
+
+.carrusel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carrusel-images {
+    display: flex;
+    gap: 0;
+    transition: transform 0.4s ease-in-out;
+    will-change: transform;
+}
+
+.carrusel-images img {
+    filter: saturate(0);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrusel-images a {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: calc(100% / 3);
+    height: 100vh;
+}
+
+.carrusel-btn {
+    background-color: transparent;
+    border: 3px solid var(--bone-white);
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    padding: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#left {
+    position: absolute;
+    top: 50%;   
+    left: 30px;
+}
+
+#right {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+}
+
+#left img, #right img {
+    filter: invert(99%) sepia(2%) saturate(134%) hue-rotate(254deg) brightness(118%) contrast(92%);
+}
+
+#left[disabled] {
+    transform: translateX(-200%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#right[disabled] {
+    transform: translateX(200%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Pseudoclasses */
+.carrusel-btn:hover, .carrusel-btn:focus {
+    border-color: var(--old-gold);
+    box-shadow: none;
+}
+
+#left:hover img, #left:focus img, #right:hover img, #right:focus img {
+    filter: invert(0%) sepia(3%) saturate(3957%) hue-rotate(58deg) brightness(111%) contrast(90%);
+}
+
+.carrusel-images a:hover img, .carrusel-images a:focus img {
+    filter: saturate(1);
+    transition: filter 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .carrusel-images a {
+        flex-basis: calc(100% / 1);
+    }
+
+    .carrusel-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    #left {
+        position: absolute;
+        top: 50%;   
+        left: 15px;
+    }
+
+    #right {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .carrusel-images a {
+        flex-basis: calc(100% / 2);
+    }
+}

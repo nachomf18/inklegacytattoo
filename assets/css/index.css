@@ -1,0 +1,152 @@
+@import url('./global.css');
+
+section {
+    width: 100%;
+    padding: 30px 0;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/hero.png);
+    background-size: cover;
+    background-position: 20% 30%;
+    filter: saturate(0);
+}
+
+.section-title {
+    text-align: center;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.content-title {
+    font-weight: 500;
+}
+
+.section-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.section-images img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.8);
+}
+
+.section-images a {
+    filter: saturate(0);
+}
+
+.artist {
+    position: relative;
+}
+
+.text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bone-white);
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    margin: 0 auto;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark-gray);
+    color: var(--bone-white);
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px 30px;
+}
+
+.card img {
+    border-radius: 50%;
+}
+
+.card p {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Pseudoclasses */
+section:first-of-type {
+    padding: 0;
+    margin: 0;
+}
+
+.artist:hover .text, .artist:focus-within .text {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.section-images a:hover, .section-images a:focus {
+    filter: saturate(1);
+    transition: all 0.3s ease
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .section-content {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .section-images {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .section-content {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .section-images {
+        grid-template-columns: 1fr;
+    }
+
+    #artist_images {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 auto;
+        width: 90%;
+        gap: 25px;
+    }
+
+    #third-card {
+        grid-column: 1 / 3;
+    }
+}
