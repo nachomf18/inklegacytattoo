@@ -115,7 +115,7 @@ const tatuadores = [
         document.querySelector('.imagen-artista').style.backgroundImage = `url(${tatuador.imagen})`;
         document.querySelector('button').textContent = `Reserva cita con ${tatuador.nombre.split(' ')[0]}`;
         document.querySelector('button').onclick = () => {
-            window.location.href = 'contacto.html?artista=' + tatuador.nombre.split(' ')[0].toLowerCase();
+            window.location.href = 'contacto.php?artista=' + tatuador.nombre.split(' ')[0].toLowerCase();
         }
         const galeria = document.querySelector('.galeria-tatuajes');
         for (let index = 0; index < tatuador.tatuajes.length; index++) {

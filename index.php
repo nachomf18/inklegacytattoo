@@ -8,18 +8,7 @@
 </head>
 <body>
     <!--Cabecera-->
-    <header>
-        <nav>
-            <a href="index.html"><img src="./assets/img/logo.png" alt="Ink Legacy Tattoo Studio - Logotipo oficial del estudio de tatuajes" height="90"></a>
-            <ul>
-                <li><a href="index.html">INICIO</a></li>
-                <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
-                <li><a href="artistas.html">ARTISTAS</a></li>
-                <li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
-            <img src="./assets/img/menu.svg" alt="Abrir menú de navegación" id="menu-icon" height="40">
-        </nav>
-    </header>
+    <?php require "header.php"; ?>
 
     <main>
         <!--Sección Principal-->
@@ -78,27 +67,27 @@
 
             <div class="section-images" id="artist_images">
                 <div class="artist">
-                    <a href="perfilartista.html?id=1"><img src="./assets/img/tatuadores/DavidNavarro.png" alt="Retrato de Diego Navarro, tatuador especialista en Blackwork y Fineline"></a>
+                    <a href="perfilartista.php?id=1"><img src="./assets/img/tatuadores/DavidNavarro.png" alt="Retrato de Diego Navarro, tatuador especialista en Blackwork y Fineline"></a>
                     <div class="text">DIEGO NAVARRO<br><h4>BLACKWORK Y FINELINE</h4></div>
                 </div>
                 <div class="artist">
-                    <a href="perfilartista.html?id=2"><img src="./assets/img/tatuadores/ClaudiaReyes.png" alt="Retrato de Claudia Reyes, tatuadora especialista en estilo Japonés y Ornamental"></a>
+                    <a href="perfilartista.php?id=2"><img src="./assets/img/tatuadores/ClaudiaReyes.png" alt="Retrato de Claudia Reyes, tatuadora especialista en estilo Japonés y Ornamental"></a>
                     <div class="text">CLAUDIA REYES<br><h4>JAPONÉS Y ORNAMENTAL</h4></div>
                 </div>
                 <div class="artist">
-                    <a href="perfilartista.html?id=3"><img src="./assets/img/tatuadores/AlvaroMendoza.png" alt="Retrato de Álvaro Mendoza, tatuador especialista en Realismo y Black and Grey"></a>
+                    <a href="perfilartista.php?id=3"><img src="./assets/img/tatuadores/AlvaroMendoza.png" alt="Retrato de Álvaro Mendoza, tatuador especialista en Realismo y Black and Grey"></a>
                     <div class="text">ÁLVARO MENDOZA<br><h4>REALISMO Y BLACK AND GREY</h4></div>
                 </div>
                 <div class="artist">
-                    <a href="perfilartista.html?id=4"><img src="./assets/img/tatuadores/MarcosLira.png" alt="Retrato de Marcos Lira, tatuador especialista en Anime y New School"></a>
+                    <a href="perfilartista.php?id=4"><img src="./assets/img/tatuadores/MarcosLira.png" alt="Retrato de Marcos Lira, tatuador especialista en Anime y New School"></a>
                     <div class="text">MARCOS LIRA<br><h4>ANIME Y NEW SCHOOL</h4></div>
                 </div>
                 <div class="artist">
-                    <a href="perfilartista.html?id=5"><img src="./assets/img/tatuadores/MartinaSanchez.png" alt="Retrato de Martina Sánchez, tatuadora especialista en Neotradicional y Acuarela"></a>
+                    <a href="perfilartista.php?id=5"><img src="./assets/img/tatuadores/MartinaSanchez.png" alt="Retrato de Martina Sánchez, tatuadora especialista en Neotradicional y Acuarela"></a>
                     <div class="text">MARTINA SÁNCHEZ<br><h4>NEOTRADICIONAL Y ACUARELA</h4></div>
                 </div>
                 <div class="artist">
-                    <a href="perfilartista.html?id=6"><img src="./assets/img/tatuadores/RubenGomez.png" alt="Retrato de Rubén Gómez, fundador y tatuador especialista en Realismo y Old School"></a>
+                    <a href="perfilartista.php?id=6"><img src="./assets/img/tatuadores/RubenGomez.png" alt="Retrato de Rubén Gómez, fundador y tatuador especialista en Realismo y Old School"></a>
                     <div class="text">RUBÉN GÓMEZ<br><h4>REALISMO Y OLD SCHOOL</h4></div>
                 </div>
             </div>
@@ -145,30 +134,14 @@
                         ¿No lo tienes claro? No te preocupes, escríbenos y cuéntanos qué estás buscando, estaremos encantados de resolver todas tus dudas y hacerte un hueco.
                     </p>
                     <br>
-                    <button onclick="window.location.href='contacto.html'">Reserva tu cita</button>
+                    <button onclick="window.location.href='contacto.php'">Reserva tu cita</button>
                 </div>
             </div>
         </section>
     </main>
 
     <!--Pie de página-->
-    <footer>
-        <div class="legal-info">
-            <h4>© 2025 INK LEGACY</h4>|
-            <a href="#">POLÍTICA DE COOKIES</a>|
-            <a href="#">POLÍTICA DE PRIVACIDAD</a>
-        </div>
-
-        <div class="contact-info">
-            <a href="https://maps.app.goo.gl/Qi53svSpk2oMX4r38">CALLE DE PIZARRO, 3<br>28004, MADRID</a>
-            <a href="tel:+34654412700">+34 654 41 27 00</a>
-        </div>
-
-        <div class="social-media">
-            <a href="https://www.instagram.com/"><img src="./assets/img/instagram.svg" alt="Logotipo de Instagram"></a>
-            <a href="https://www.pinterest.com/"><img src="./assets/img/pinterest.svg" alt="Logotipo de Pinterest"></a>
-        </div>
-    </footer>
+    <?php require "footer.php"; ?>
 
     <script src="./assets/js/navBar.js"></script>
 </body>

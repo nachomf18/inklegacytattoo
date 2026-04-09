@@ -8,18 +8,7 @@
 </head>
 <body>
     <!--Cabecera-->
-    <header>
-        <nav>
-            <a href="index.html"><img src="./assets/img/logo.png" alt="Ink Legacy Tattoo Studio - Logotipo oficial del estudio de tatuajes" height="90"></a>
-            <ul>
-                <li><a href="index.html">INICIO</a></li>
-                <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
-                <li><a href="artistas.html">ARTISTAS</a></li>
-                <li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
-            <img src="./assets/img/menu.svg" alt="Abrir menú de navegación" id="menu-icon" height="40">
-        </nav>
-    </header>
+    <?php require "header.php"; ?>
 
     <main>
         <!--Sección Datos Artista-->
@@ -49,23 +38,7 @@
     </main>
 
     <!--Pie de página-->
-    <footer>
-        <div class="legal-info">
-            <h4>© 2025 INK LEGACY</h4>|
-            <a href="#">POLÍTICA DE COOKIES</a>|
-            <a href="#">POLÍTICA DE PRIVACIDAD</a>
-        </div>
-
-        <div class="contact-info">
-            <a href="https://maps.app.goo.gl/Qi53svSpk2oMX4r38">CALLE DE PIZARRO, 3 <br> 28004, MADRID</a>
-            <a href="tel:+34654412700">+34 654 41 27 00</a>
-        </div>
-
-        <div class="social-media">
-            <a href="https://www.instagram.com/"><img src="./assets/img/instagram.svg" alt="Logotipo de Instagram"></a>
-            <a href="https://www.pinterest.com/"><img src="./assets/img/pinterest.svg" alt="Logotipo de Pinterest"></a>
-        </div>
-    </footer>
+    <?php require "footer.php"; ?>
 
     <script src="./assets/js/navBar.js"></script>
     <script src="./assets/js/perfilArtista.js"></script>
