@@ -1,0 +1,87 @@
+@import url('./global.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--carbon-black);
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    background-color: var(--bone-white);
+    padding: 40px;
+    width: 30%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    width: 100%;
+}
+
+label {
+    font-family: 'Roboto', monospace;
+    font-size: 18px;
+}
+
+.placeholder {
+    padding-left: 2px;
+    position: absolute;
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+input {
+    width: 100%;
+    background-color: var(--bone-white);
+    border: none;
+    font-family: 'Roboto', monospace;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    border-bottom: 2px solid rgba(13, 13, 13, 0.5);
+}
+
+/* Pseudoclasses */
+input:focus{
+    outline: none;
+    border-bottom: 2px solid var(--old-gold);
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+input:focus + .placeholder {
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+input:valid + .placeholder {
+    transform: translateY(-70px);
+    color: var(--old-gold);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    form {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+   form {
+        width: 50%;
+    }
+}

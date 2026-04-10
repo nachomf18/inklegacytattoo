@@ -5,7 +5,7 @@ require "db/db_connection.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $name = $_POST["name"];
+    $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
     $instagram = $_POST["instagram"];
 
@@ -17,11 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $query = $db->prepare("INSERT INTO tatuadores (email, clave, nombre, descripcion, instagram, imagen) VALUES (?, ?, ?, ?, ?, ?)");
-    $query->execute(array($email, password_hash($password, PASSWORD_DEFAULT), $name, $descripcion, $instagram, $dir));
+    $query = get_tatuador($email);
 
-    header("Location: login.php");
-    exit();
+    if ($query) {
+        echo "El correo electrónico introducido ya está registrado.";
+    } else {
+        $query = insert_tatuador($email, password_hash($password, PASSWORD_DEFAULT), $nombre, $descripcion, $instagram, $dir);
+
+        if ($query) {
+            header("Location: login.php");
+            exit();
+        } else {
+            echo "Error al registrar. Inténtalo de nuevo.";
+        }
+    }
 }
 
 ?>
@@ -36,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <h2>Registro</h2>
-        <label for="name">Nombre completo:</label>
+        <label for="nombre">Nombre completo:</label>
         <br>
-        <input type="text" id="name" name="name">
+        <input type="text" id="nombre" name="nombre">
         <br><br>
         <label for="email">Correo electrónico:</label>
         <br>

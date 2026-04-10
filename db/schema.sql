@@ -3,7 +3,7 @@ USE "inklegacy";
 
 CREATE TABLE tatuadores (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     clave VARCHAR(255) NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
