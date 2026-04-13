@@ -15,8 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_id"] = $tatuador["id"];
         header("Location: index.php");
         exit();
-    } else {
-        
     }
 }
 
@@ -33,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form action="" method="post">
         <h2>INICIAR SESIÓN</h2>
-        <br>
+        <?php if (isset($tatuador) && !$tatuador) {
+            echo "<p style='color: red;'>Correo electrónico o contraseña incorrectos</p>";
+        }
+        ?>
         <input type="text" id="email" name="email" required>
         <label for="email" class="placeholder">Correo electrónico</label>
         <br>

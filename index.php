@@ -92,7 +92,6 @@
                 </div>
             </div>
         </section>
-        </section>
 
         <!--Sección Testimonios-->
         <section>

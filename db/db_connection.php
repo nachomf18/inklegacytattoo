@@ -36,3 +36,22 @@ function update_tatuador($email, $clave, $nombre, $descripcion, $instagram, $ima
     $query = $db->prepare("UPDATE tatuadores SET email = ?, clave = ?, nombre = ?, descripcion = ?, instagram = ?, imagen = ? WHERE id = ?");
     return $query->execute(array($email, $clave, $nombre, $descripcion, $instagram, $imagen, $id));
 }
+
+function insert_tatuaje($ruta, $id_tatuador) {
+    global $db;
+    $query = $db->prepare("INSERT INTO tatuajes (ruta, id_tatuador) VALUES (?, ?)");
+    return $query->execute(array($ruta, $id_tatuador));
+}
+
+function get_tatuajes($id_tatuador) {
+    global $db;
+    $query = $db->prepare("SELECT * FROM tatuajes WHERE id_tatuador = ?");
+    $query->execute(array($id_tatuador));
+    return $query->fetchAll();
+}
+
+function delete_tatuaje($id) {
+    global $db;
+    $query = $db->prepare("DELETE FROM tatuajes WHERE id = ?");
+    return $query->execute(array($id));
+}

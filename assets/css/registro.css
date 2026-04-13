@@ -16,7 +16,7 @@ h2 {
 form {
     background-color: var(--bone-white);
     padding: 40px;
-    width: 30%;
+    width: 50%;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -28,12 +28,12 @@ button {
 /* Media Queries */
 @media (max-width: 767px) {
     form {
-        width: 50%;
+        width: 70%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
    form {
-        width: 50%;
+        width: 70%;
     }
 }

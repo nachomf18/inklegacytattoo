@@ -68,6 +68,58 @@ button {
     cursor: pointer;
 }
 
+/* Form */
+label {
+    font-family: 'Roboto', monospace;
+    font-size: 18px;
+}
+
+.placeholder {
+    padding-left: 2px;
+    position: absolute;
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+input, textarea {
+    width: 100%;
+    background-color: var(--bone-white);
+    border: none;
+    font-family: 'Roboto', monospace;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    border-bottom: 2px solid rgba(13, 13, 13, 0.5);
+}
+
+input[type="file"] {
+    border: none;
+    padding: 0;
+}
+
+textarea {
+    line-height: 40px;
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent 38px, rgba(13, 13, 13, 0.8) 40px);
+    min-height: 198px;
+    resize: none;
+}
+
+select {
+    padding: 10px 20px;
+    font-family: 'Roboto', monospace;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--bone-white);
+}
+
+option {
+    background-color: var(--bone-white);
+}
+
 /* Navigation Bar */
 nav {
     position: fixed;
@@ -154,6 +206,41 @@ button:hover, button:focus {
 
 .social-media a:hover img, .social-media a:focus img {
     filter: invert(86%) sepia(99%) saturate(367%) hue-rotate(309deg) brightness(83%) contrast(83%);
+}
+
+select:focus {
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 2px solid var(--old-gold);
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+input[type="file"]:focus {
+    border: none;
+    padding: 0;
+}
+
+input:focus + .placeholder {
+    transform: translateY(-45px);
+    color: rgba(13, 13, 13, 0.5);
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+input:valid + .placeholder {
+    transform: translateY(-70px);
+    color: var(--old-gold);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+textarea:focus{
+    outline: none;
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent 38px, var(--old-gold) 40px);
+    transition: background-image 0.3s ease-in-out;
 }
 
 /* Media Queries */

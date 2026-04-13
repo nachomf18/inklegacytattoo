@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $query = get_tatuador($email);
+    $query = get_tatuador_by_email($email);
 
     if ($query) {
         echo "El correo electrónico introducido ya está registrado.";
@@ -41,35 +41,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="assets/css/registro.css">
 </head>
 <body>
     <form action="" method="post" enctype="multipart/form-data">
-        <h2>Registro</h2>
-        <label for="nombre">Nombre completo:</label>
+        <h2>REGISTRAR TATUADOR</h2>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="nombre" class="placeholder">Nombre completo *</label>
         <br>
-        <input type="text" id="nombre" name="nombre">
-        <br><br>
-        <label for="email">Correo electrónico:</label>
+        <input type="text" id="email" name="email" required>
+        <label for="email" class="placeholder">Correo electrónico *</label>
         <br>
-        <input type="email" id="email" name="email">
-        <br><br>
-        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="password" class="placeholder">Contraseña *</label>
         <br>
-        <input type="password" id="password" name="password">
-        <br><br>
-        <label for="descripcion">Descripción:</label>
+        <label for="descripcion">Descripción *</label>
+        <textarea name="descripcion" id="descripcion" required></textarea>
         <br>
-        <textarea name="descripcion" id="descripcion"></textarea>
-        <br><br>
-        <label for="instagram">Instagram:</label>
+        <input type="text" id="instagram" name="instagram" required>
+        <label for="instagram" class="placeholder">Instagram *</label>
         <br>
-        <input type="text" id="instagram" name="instagram">
-        <br><br>
-        <label for="imagen">Imagen:</label>
+        <label for="imagen">Imagen *</label>
+        <input type="file" id="imagen" name="imagen" required>
         <br>
-        <input type="file" id="imagen" name="imagen">
-        <br><br>
-        <input type="submit" value="Registrarse">
+        <button type="submit">Registrar</button>
     </form>
 </body>
 </html>
