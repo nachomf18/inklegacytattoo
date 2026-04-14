@@ -1,6 +1,12 @@
 <?php
 
 require "db/db_connection.php";
+require "db/comprobar_sesion.php";
+
+if ($_SESSION["user_id"] != 1) {
+    header("Location: login.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

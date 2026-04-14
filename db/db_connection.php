@@ -11,6 +11,13 @@ try {
     die("Error de conexión: " . $e->getMessage());
 }
 
+function get_tatuadores() {
+    global $db;
+    $query = $db->prepare("SELECT * FROM tatuadores");
+    $query->execute();
+    return $query->fetchAll();
+}
+
 function get_tatuador_by_email($email) {
     global $db;
     $query = $db->prepare("SELECT * FROM tatuadores WHERE email = ?");

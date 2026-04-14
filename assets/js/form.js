@@ -1,4 +1,4 @@
-const nombre = new URLSearchParams(window.location.search).get("artista");
+const nombre = new URLSearchParams(window.location.search).get("id");
 
 if (nombre) {
     document.querySelector("select").value = nombre;

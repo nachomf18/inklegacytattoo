@@ -1,12 +1,10 @@
 <?php
 
-function comprobar_sesion() {
-    session_start();
+session_start();
 
-    if (!isset($_SESSION["user_id"])) {
-        header("Location: login.php");
-        exit();
-    }
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
 }
 
 ?>

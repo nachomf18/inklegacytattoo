@@ -3,8 +3,6 @@
 require "db/db_connection.php";
 require "db/comprobar_sesion.php";
 
-comprobar_sesion();
-
 $tatuador = get_tatuador_by_id($_SESSION['user_id']);
 $tatuajes = get_tatuajes($_SESSION['user_id']);
 

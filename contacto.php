@@ -1,3 +1,11 @@
+<?php
+
+require "db/db_connection.php";
+
+$tatuadores = get_tatuadores();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -60,13 +68,11 @@
                         <label for="artist">Artista</label>
                         <br>
                         <select name="artist" id="artist">
-                            <option value="">-- Seleccione un artista --</option>
-                            <option value="diego">Diego Navarro</option>
-                            <option value="claudia">Claudia Reyes</option>
-                            <option value="álvaro">Álvaro Mendoza</option>
-                            <option value="martina">Martina Sánchez</option>
-                            <option value="rubén">Rubén Gómez</option>
-                            <option value="marcos">Marcos Lira</option>
+                        <?php
+                            foreach ($tatuadores as $tatuador) {
+                                echo "<option value='" . $tatuador['id'] . "'>" . $tatuador['nombre'] . "</option>";
+                            }
+                        ?>
                         </select>
                         <br><br>
                         <button type="submit">Enviar</button>
@@ -79,6 +85,7 @@
         <section>
             <div class="mapa">
                 <iframe title="Ubicación de Ink Legacy Tattoo Studio en Google Maps - Calle de Pizarro, 3, Madrid" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.3723420530146!2d-3.7063445!3d40.42275339999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42286331f2caeb%3A0x3c08a4973a842c96!2sC.%20de%20Pizarro%2C%203%2C%20Centro%2C%2028004%20Madrid!5e0!3m2!1ses!2ses!4v1764420100742!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
     </main>
 

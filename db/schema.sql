@@ -6,7 +6,7 @@ CREATE TABLE tatuadores (
     email VARCHAR(255) UNIQUE NOT NULL,
     clave VARCHAR(255) NOT NULL,
     nombre VARCHAR(255) NOT NULL,
-    descripcion VARCHAR(255) NOT NULL,
+    descripcion TEXT NOT NULL,
     instagram VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL
 );
