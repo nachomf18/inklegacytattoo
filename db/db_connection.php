@@ -32,16 +32,16 @@ function get_tatuador_by_id($id) {
     return $query->fetch();
 }
 
-function insert_tatuador($email, $clave, $nombre, $descripcion, $instagram, $imagen) {
+function insert_tatuador($email, $clave, $nombre, $descripcion, $estilo, $instagram, $imagen) {
     global $db;
-    $query = $db->prepare("INSERT INTO tatuadores (email, clave, nombre, descripcion, instagram, imagen) VALUES (?, ?, ?, ?, ?, ?)");
-    return $query->execute(array($email, $clave, $nombre, $descripcion, $instagram, $imagen));
+    $query = $db->prepare("INSERT INTO tatuadores (email, clave, nombre, descripcion, estilo, instagram, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    return $query->execute(array($email, $clave, $nombre, $descripcion, $estilo, $instagram, $imagen));
 }
 
-function update_tatuador($email, $clave, $nombre, $descripcion, $instagram, $imagen, $id) {
+function update_tatuador($email, $clave, $nombre, $descripcion, $estilo, $instagram, $imagen, $id) {
     global $db;
-    $query = $db->prepare("UPDATE tatuadores SET email = ?, clave = ?, nombre = ?, descripcion = ?, instagram = ?, imagen = ? WHERE id = ?");
-    return $query->execute(array($email, $clave, $nombre, $descripcion, $instagram, $imagen, $id));
+    $query = $db->prepare("UPDATE tatuadores SET email = ?, clave = ?, nombre = ?, descripcion = ?, estilo = ?, instagram = ?, imagen = ? WHERE id = ?");
+    return $query->execute(array($email, $clave, $nombre, $descripcion, $estilo, $instagram, $imagen, $id));
 }
 
 function insert_tatuaje($ruta, $id_tatuador) {

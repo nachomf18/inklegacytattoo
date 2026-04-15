@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
+    $estilo = $_POST["estilo"];
     $instagram = $_POST["instagram"];
 
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
@@ -28,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($query) {
         echo "El correo electrónico introducido ya está registrado.";
     } else {
-        $query = insert_tatuador($email, password_hash($password, PASSWORD_DEFAULT), $nombre, $descripcion, $instagram, $dir);
+        $query = insert_tatuador($email, password_hash($password, PASSWORD_DEFAULT), $nombre, $descripcion, $estilo, $instagram, $dir);
 
         if ($query) {
             header("Location: login.php");
@@ -64,11 +65,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="descripcion">Descripción *</label>
         <textarea name="descripcion" id="descripcion" required></textarea>
         <br>
+        <input type="text" id="estilo" name="estilo" required>
+        <label for="estilo" class="placeholder">Estilo *</label>
+        <br>
         <input type="text" id="instagram" name="instagram" required>
         <label for="instagram" class="placeholder">Instagram *</label>
         <br>
         <label for="imagen">Imagen *</label>
-        <input type="file" id="imagen" name="imagen" required>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
         <br>
         <button type="submit">Registrar</button>
     </form>
