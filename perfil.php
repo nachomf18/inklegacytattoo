@@ -6,6 +6,7 @@ require "db/comprobar_sesion.php";
 $tatuador = get_tatuador_by_id($_SESSION['user_id']);
 $tatuajes = get_tatuajes($_SESSION['user_id']);
 $num_tatuajes = count($tatuajes);
+$mensajes = get_mensajes($_SESSION['user_id']);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["perfil"])) {
@@ -107,6 +108,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section>
             <h1>MI PERFIL</h1> 
             <div class="container">
+                <div>
+                    <h1>Mensajes</h1>
+                    <table>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Asunto</th>
+                            <th>Mensaje</th>
+                        </tr>
+                        <?php foreach ($mensajes as $mensaje) { ?>
+                            <tr>
+                                <td><?= $mensaje['nombre'] ?></td>
+                                <td><?= $mensaje['email'] ?></td>
+                                <td><?= $mensaje['asunto'] ?></td>
+                                <td><?= $mensaje['mensaje'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="datos">
                         <div class="datos-personales">
@@ -156,6 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <button type="submit" name="subir_tatuajes">Subir Tatuajes</button>
                 </form>
+
                 <div class="galeria">
                     <?php foreach ($tatuajes as $tatuaje) { ?>
                         <a href="eliminar_tatuaje.php?id=<?= $tatuaje['id'] ?>">
@@ -164,14 +186,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php } ?>
                 </div>
             </div>   
-        </section>
-
-        <section>
-
-        </section>
-
-        <section>
-
         </section>
     </main>
 </body>

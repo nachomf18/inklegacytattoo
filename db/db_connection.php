@@ -75,3 +75,16 @@ function delete_tatuaje($id) {
     $query = $db->prepare("DELETE FROM tatuajes WHERE id = ?");
     return $query->execute(array($id));
 }
+
+function insert_mensaje($name, $email, $asunto, $mensaje, $tatuador) {
+    global $db;
+    $query = $db->prepare("INSERT INTO mensajes (nombre, email, asunto, mensaje, id_tatuador) VALUES (?, ?, ?, ?, ?)");
+    return $query->execute(array($name, $email, $asunto, $mensaje, $tatuador));
+}
+
+function get_mensajes($id_tatuador) {
+    global $db;
+    $query = $db->prepare("SELECT * FROM mensajes WHERE id_tatuador = ?");
+    $query->execute(array($id_tatuador));
+    return $query->fetchAll();
+}

@@ -52,18 +52,18 @@ $tatuadores = get_tatuadores();
                 </div>
     
                 <div class="form">
-                    <form>
-                        <input type="text" id="name" required>
+                    <form action="enviar_formulario.php" method="POST">
+                        <input type="text" id="name" name="name" required>
                         <label for="name" class="placeholder">Nombre y apellidos *</label>
                         <br>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                         <label for="email" class="placeholder">Correo electrónico *</label>
                         <br>
-                        <input type="text" id="subject" required>
+                        <input type="text" id="subject" name="subject" required>
                         <label for="subject" class="placeholder">Asunto *</label>
                         <br>
                         <label for="message">Mensaje *</label>
-                        <textarea id="message" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                         <br>
                         <label for="artist">Artista</label>
                         <br>
@@ -76,6 +76,12 @@ $tatuadores = get_tatuadores();
                         </select>
                         <br><br>
                         <button type="submit">Enviar</button>
+                        <?php
+                            if (isset($_SESSION["mensaje"])) {
+                                echo "<p style='margin-top: 20px; font-size: 1em'>" . $_SESSION["mensaje"] . "</p>";
+                                unset($_SESSION["mensaje"]);
+                            }
+                        ?>
                     </form>
                 </div>
             </div>

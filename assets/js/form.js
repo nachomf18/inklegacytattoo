@@ -1,21 +1,21 @@
-const nombre = new URLSearchParams(window.location.search).get("id");
+const id = new URLSearchParams(window.location.search).get("id");
 
-if (nombre) {
-    document.querySelector("select").value = nombre;
+if (id) {
+    document.querySelector("select").value = id;
 }
 
-form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
+// form = document.querySelector("form");
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault();
     
-    const p = document.createElement("p");
-    p.textContent = "¡Gracias por escribirnos! Nos pondremos en contacto contigo pronto.";
-    p.style.marginTop = "20px";
-    p.style.fontSize = "1em";
+//     const p = document.createElement("p");
+//     p.textContent = "¡Gracias por escribirnos! Nos pondremos en contacto contigo pronto.";
+//     p.style.marginTop = "20px";
+//     p.style.fontSize = "1em";
 
-    form.reset();
-    form.appendChild(p);
-});
+//     form.reset();
+//     form.appendChild(p);
+// });
 
 const emailInput = document.getElementById("email");
 emailInput.addEventListener("input", () =>  {
