@@ -1,3 +1,11 @@
+<?php
+
+require "db/db_connection.php";
+
+$tatuadores = get_tatuadores();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -66,30 +74,12 @@
             </div>
 
             <div class="section-images" id="artist_images">
-                <div class="artist">
-                    <a href="perfilartista.php?id=1"><img src="./assets/img/tatuadores/DavidNavarro.png" alt="Retrato de Diego Navarro, tatuador especialista en Blackwork y Fineline"></a>
-                    <div class="text">DIEGO NAVARRO<br><h4>BLACKWORK Y FINELINE</h4></div>
-                </div>
-                <div class="artist">
-                    <a href="perfilartista.php?id=2"><img src="./assets/img/tatuadores/ClaudiaReyes.png" alt="Retrato de Claudia Reyes, tatuadora especialista en estilo Japonés y Ornamental"></a>
-                    <div class="text">CLAUDIA REYES<br><h4>JAPONÉS Y ORNAMENTAL</h4></div>
-                </div>
-                <div class="artist">
-                    <a href="perfilartista.php?id=3"><img src="./assets/img/tatuadores/AlvaroMendoza.png" alt="Retrato de Álvaro Mendoza, tatuador especialista en Realismo y Black and Grey"></a>
-                    <div class="text">ÁLVARO MENDOZA<br><h4>REALISMO Y BLACK AND GREY</h4></div>
-                </div>
-                <div class="artist">
-                    <a href="perfilartista.php?id=4"><img src="./assets/img/tatuadores/MarcosLira.png" alt="Retrato de Marcos Lira, tatuador especialista en Anime y New School"></a>
-                    <div class="text">MARCOS LIRA<br><h4>ANIME Y NEW SCHOOL</h4></div>
-                </div>
-                <div class="artist">
-                    <a href="perfilartista.php?id=5"><img src="./assets/img/tatuadores/MartinaSanchez.png" alt="Retrato de Martina Sánchez, tatuadora especialista en Neotradicional y Acuarela"></a>
-                    <div class="text">MARTINA SÁNCHEZ<br><h4>NEOTRADICIONAL Y ACUARELA</h4></div>
-                </div>
-                <div class="artist">
-                    <a href="perfilartista.php?id=6"><img src="./assets/img/tatuadores/RubenGomez.png" alt="Retrato de Rubén Gómez, fundador y tatuador especialista en Realismo y Old School"></a>
-                    <div class="text">RUBÉN GÓMEZ<br><h4>REALISMO Y OLD SCHOOL</h4></div>
-                </div>
+                <?php foreach ($tatuadores as $tatuador) { ?>
+                    <div class="artist">
+                        <a href="perfilartista.php?id=<?= $tatuador['id'] ?>"><img src="<?= $tatuador['imagen'] ?>" alt="Retrato de <?= $tatuador['nombre'] ?>, tatuador especialista en <?= $tatuador['estilo'] ?>"></a>
+                        <div class="text"><?= mb_strtoupper($tatuador['nombre']) ?><br><h4><?= mb_strtoupper($tatuador['estilo']) ?></h4></div>
+                    </div>
+                <?php } ?>
             </div>
         </section>
 

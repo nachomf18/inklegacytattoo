@@ -60,16 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 foreach ($_FILES["tatuajes"]["tmp_name"] as $index => $tmpName) {
                     if ($_FILES["tatuajes"]["error"][$index] == 0) {
                         $ruta = "assets/img/tatuajes/" . basename($_FILES["tatuajes"]["name"][$index]);
-                        if (!file_exists($ruta)) {
-                            if (move_uploaded_file($tmpName, $ruta)) {
-                                if(!insert_tatuaje($ruta, $_SESSION['user_id'])) {
-                                    $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . " en la base de datos.";
-                                }
-                            } else {
-                                $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
+                        if (move_uploaded_file($tmpName, $ruta)) {
+                            if(!insert_tatuaje($ruta, $_SESSION['user_id'])) {
+                                $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . " en la base de datos.";
                             }
                         } else {
-                            $errors[] = "El archivo " . $_FILES["tatuajes"]["name"][$index] . " ya existe.";
+                            $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
                         }
                     } else {
                         $errors[] = "Error al subir el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
@@ -109,13 +105,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>MI PERFIL</h1> 
             <div class="container">
                 <div>
-                    <h1>Mensajes</h1>
-                    <table>
+                    <h2>MENSAJES</h2>
+                    <table border="1" cellpadding="10">
                         <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Asunto</th>
-                            <th>Mensaje</th>
+                            <th width="20%">NOMBRE</th>
+                            <th width="20%">CORREO ELECTRÓNICO</th>
+                            <th width="20%">ASUNTO</th>
+                            <th width="40%">MENSAJE</th>
+                            <th>ACCIONES</th>
                         </tr>
                         <?php foreach ($mensajes as $mensaje) { ?>
                             <tr>
@@ -123,6 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><?= $mensaje['email'] ?></td>
                                 <td><?= $mensaje['asunto'] ?></td>
                                 <td><?= $mensaje['mensaje'] ?></td>
+                                <td>
+                                    <form action="eliminar_mensaje.php" method="post">
+                                        <button type="submit" name="id" value="<?= $mensaje['id'] ?>">Eliminar</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php } ?>
                     </table>
@@ -188,5 +190,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>   
         </section>
     </main>
+
+    <?php require "footer.php"; ?>
+
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

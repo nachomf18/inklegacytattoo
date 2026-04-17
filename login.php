@@ -8,13 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $query = get_tatuador_by_email($email);
-    $tatuador = $query;
+    $tatuador = get_tatuador_by_email($email);
 
     if ($tatuador && password_verify($password, $tatuador["clave"])) {
         $_SESSION["user_id"] = $tatuador["id"];
         header("Location: index.php");
         exit();
+    } else {
+        $error = "Correo electrónico o contraseña incorrectos";
     }
 }
 
@@ -31,17 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form action="" method="post">
         <h2>INICIAR SESIÓN</h2>
-        <?php if (isset($tatuador) && !$tatuador) {
-            echo "<p style='color: red;'>Correo electrónico o contraseña incorrectos</p>";
+        <?php if (isset($error)) {
+            echo "<p style='color: red;'>$error</p>";
         }
         ?>
-        <input type="text" id="email" name="email" required>
+        <input type="email" id="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"] : "" ?>" required>
         <label for="email" class="placeholder">Correo electrónico</label>
         <br>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" value="<?= isset($_POST["password"]) ? $_POST["password"] : "" ?>" required>
         <label for="password" class="placeholder">Contraseña</label>
         <br>
         <button type="submit" value="Iniciar Sesión">Iniciar Sesión</button>
     </form>
+
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

@@ -88,3 +88,9 @@ function get_mensajes($id_tatuador) {
     $query->execute(array($id_tatuador));
     return $query->fetchAll();
 }
+
+function delete_mensaje($id) {
+    global $db;
+    $query = $db->prepare("DELETE FROM mensajes WHERE id = ?");
+    return $query->execute(array($id));
+}

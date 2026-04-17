@@ -3,6 +3,7 @@
 require "db/db_connection.php";
 require "db/comprobar_sesion.php";
 
+// Comenta estas líneas para crear el primer usuario, que sería el "administrador".
 if ($_SESSION["user_id"] != 1) {
     header("Location: login.php");
     exit();
@@ -18,25 +19,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         $dir = "assets/img/tatuadores/" . basename($_FILES["imagen"]["name"]);
-        move_uploaded_file($_FILES["imagen"]["tmp_name"], $dir);
-    } else {
-        echo "Error al subir la imagen.";
-        exit();
-    }
-
-    $query = get_tatuador_by_email($email);
-
-    if ($query) {
-        echo "El correo electrónico introducido ya está registrado.";
-    } else {
-        $query = insert_tatuador($email, password_hash($password, PASSWORD_DEFAULT), $nombre, $descripcion, $estilo, $instagram, $dir);
-
-        if ($query) {
-            header("Location: login.php");
-            exit();
+        if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $dir)) {
+            $error = "Error al guardar la imagen.";
         } else {
-            echo "Error al registrar. Inténtalo de nuevo.";
+            $query = get_tatuador_by_email($email);
+
+            if ($query) {
+                $error = "El correo electrónico introducido ya está registrado.";
+            } else {
+                $query = insert_tatuador($email, password_hash($password, PASSWORD_DEFAULT), $nombre, $descripcion, $estilo, $instagram, $dir);
+                if ($query) {
+                    header("Location: login.php");
+                    exit();
+                } else {
+                    $error = "Error al registrar el tatuador.";
+                }
+            }
         }
+    } else {
+        $error = "Error al subir la imagen.";
     }
 }
 
@@ -53,22 +54,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <h2>REGISTRAR TATUADOR</h2>
-        <input type="text" id="nombre" name="nombre" required>
+        <?php if (isset($error)) { ?>
+            <p style="color: red;"><?= $error ?></p>
+        <?php } ?>
+        <input type="text" id="nombre" name="nombre" value="<?= isset($_POST["nombre"]) ? $_POST["nombre"] : "" ?>" required>
         <label for="nombre" class="placeholder">Nombre completo *</label>
         <br>
-        <input type="text" id="email" name="email" required>
+        <input type="email" id="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"] : "" ?>" required>
         <label for="email" class="placeholder">Correo electrónico *</label>
         <br>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" value="<?= isset($_POST["password"]) ? $_POST["password"] : "" ?>" required>
         <label for="password" class="placeholder">Contraseña *</label>
         <br>
         <label for="descripcion">Descripción *</label>
-        <textarea name="descripcion" id="descripcion" required></textarea>
+        <textarea name="descripcion" id="descripcion" required><?= isset($_POST["descripcion"]) ? $_POST["descripcion"] : "" ?></textarea>
         <br>
-        <input type="text" id="estilo" name="estilo" required>
+        <input type="text" id="estilo" name="estilo" value="<?= isset($_POST["estilo"]) ? $_POST["estilo"] : "" ?>" required>
         <label for="estilo" class="placeholder">Estilo *</label>
         <br>
-        <input type="text" id="instagram" name="instagram" required>
+        <input type="text" id="instagram" name="instagram" value="<?= isset($_POST["instagram"]) ? $_POST["instagram"] : "" ?>" required>
         <label for="instagram" class="placeholder">Instagram *</label>
         <br>
         <label for="imagen">Imagen *</label>
@@ -76,5 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         <button type="submit">Registrar</button>
     </form>
+
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

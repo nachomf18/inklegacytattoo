@@ -13,9 +13,10 @@ session_start();
             <li><a href="artistas.php">ARTISTAS</a></li>
             <li><a href="contacto.php">CONTACTO</a></li>
             <?php if (!isset($_SESSION['user_id'])) { ?>
-                <li><a href="login.php">INICIAR SESIÓN</a></li>
+                <li><a href="login.php">ÁREA DE TATUADORES</a></li>
             <?php } ?>
             <?php if (isset($_SESSION['user_id'])) { ?>
+                <li><a href="perfil.php">MI PERFIL</a></li>
                 <li><a href="logout.php">CERRAR SESIÓN</a></li>
             <?php } ?>
 

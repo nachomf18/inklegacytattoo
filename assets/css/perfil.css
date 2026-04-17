@@ -7,14 +7,18 @@ section {
 .container {
     display: flex;
     flex-direction: column;
+    padding: 0px 50px;
 }
 
 h1 {
     text-align: center;
 }
 
-form {
-    padding: 0px 50px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 .datos {
