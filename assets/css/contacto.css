@@ -24,7 +24,7 @@ h3 {
     grid-template-columns: 25% 75%;
     grid-template-rows: auto;
     gap: 60px;
-    padding: 0 10%;
+    padding: 5% 10%;
     height: 100%;
     align-content: center;
 }

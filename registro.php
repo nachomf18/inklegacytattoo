@@ -18,6 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $instagram = $_POST["instagram"];
 
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
+        if (!dir("assets/img/tatuadores/")) {
+            mkdir("assets/img/tatuadores/", 0777, true);
+        }
+
         $dir = "assets/img/tatuadores/" . basename($_FILES["imagen"]["name"]);
         if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $dir)) {
             $error = "Error al guardar la imagen.";

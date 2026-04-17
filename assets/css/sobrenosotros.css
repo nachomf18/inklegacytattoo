@@ -50,3 +50,11 @@ section {
         height: 100vh;
     }
 }
+
+@media (min-width: 1301px) and (max-width: 1600px) {
+    section {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 120vh;  
+    }
+}

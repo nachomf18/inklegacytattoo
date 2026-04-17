@@ -59,6 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($_FILES["tatuajes"]["name"][0] != "") {
                 foreach ($_FILES["tatuajes"]["tmp_name"] as $index => $tmpName) {
                     if ($_FILES["tatuajes"]["error"][$index] == 0) {
+                        if (!dir("assets/img/tatuajes/")) {
+                            mkdir("assets/img/tatuajes/", 0777, true);
+                        }
+
                         $ruta = "assets/img/tatuajes/" . basename($_FILES["tatuajes"]["name"][$index]);
 
                         if (!file_exists($ruta)) {
@@ -136,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <!-- Modificar perfil -->
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="datos">
                         <div class="datos-personales">
                             <?php if (isset($ok)) { ?>

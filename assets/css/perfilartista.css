@@ -80,3 +80,13 @@ section {
         padding: 20px;
     }
 }
+
+@media (min-width: 1501px) and (max-width: 1600px) {
+    section {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 130vh;
+    }
+
+
+}
