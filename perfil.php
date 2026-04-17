@@ -60,12 +60,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 foreach ($_FILES["tatuajes"]["tmp_name"] as $index => $tmpName) {
                     if ($_FILES["tatuajes"]["error"][$index] == 0) {
                         $ruta = "assets/img/tatuajes/" . basename($_FILES["tatuajes"]["name"][$index]);
-                        if (move_uploaded_file($tmpName, $ruta)) {
-                            if(!insert_tatuaje($ruta, $_SESSION['user_id'])) {
-                                $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . " en la base de datos.";
+
+                        if (!file_exists($ruta)) {
+                            if (move_uploaded_file($tmpName, $ruta)) {
+                                if(!insert_tatuaje($ruta, $_SESSION['user_id'])) {
+                                    $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . " en la base de datos.";
+                                }
+                            } else {
+                                $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
                             }
                         } else {
-                            $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
+                            $errors[] = "El archivo " . $_FILES["tatuajes"]["name"][$index] . " ya existe.";
                         }
                     } else {
                         $errors[] = "Error al subir el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
@@ -130,7 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </table>
                 </div>
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <!-- Modificar perfil -->
+                <form action="" method="post">
                     <div class="datos">
                         <div class="datos-personales">
                             <?php if (isset($ok)) { ?>
@@ -139,43 +145,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h3 style="color: var(--blood-red);"><?= $error ?></h3>
                             <?php } ?>
                             <h2>DATOS PERSONALES</h2>
-                            <input type="text" id="nombre" name="nombre" value="<?= $tatuador['nombre'] ?>">
+                            <input type="text" id="nombre" name="nombre" value="<?= $tatuador['nombre'] ?>" required>
                             <label for="nombre" class="placeholder">Nombre</label>
                             <br>
-                            <input type="email" id="email" name="email" value="<?= $tatuador['email'] ?>">
+                            <input type="email" id="email" name="email" value="<?= $tatuador['email'] ?>" required>
                             <label for="email" class="placeholder">Email</label>
                             <br>
-                            <input type="text" id="estilo" name="estilo" value="<?= $tatuador['estilo'] ?>">
+                            <input type="text" id="estilo" name="estilo" value="<?= $tatuador['estilo'] ?>" required>
                             <label for="estilo" class="placeholder">Estilo</label>
                             <br>
-                            <input type="text" id="instagram" name="instagram" value="<?= $tatuador['instagram'] ?>">
+                            <input type="text" id="instagram" name="instagram" value="<?= $tatuador['instagram'] ?>" required>
                             <label for="instagram" class="placeholder">Instagram</label>
                             <br>
                             <label for="descripcion">Descripción</label><br>
-                            <textarea id="descripcion" name="descripcion" rows="4" cols="50"><?= $tatuador['descripcion'] ?></textarea>
+                            <textarea id="descripcion" name="descripcion" rows="4" cols="50" required><?= $tatuador['descripcion'] ?></textarea>
                             <br>
                             <button type="submit" name="perfil">Actualizar Perfil</button>
                         </div>
                         <div class="foto">
                             <img src="<?= $tatuador["imagen"] ?>" alt="">
-                            <input type="file" name="imagen" id="imagen">
+                            <input type="file" name="imagen" id="imagen" accept="image/*">
                         </div>
                     </div>
+                </form>
 
-                    <!-- Modificar contraseña -->
+                <!-- Modificar contraseña -->
+                <form action="" method="post">
                     <h2>MODIFICAR CONTRASEÑA</h2>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                     <label for="password" class="placeholder">Contraseña</label>
                     <br>
-                    <input type="password" id="confirmar_password" name="confirmar_password">
+                    <input type="password" id="confirmar_password" name="confirmar_password" required>
                     <label for="confirmar_password" class="placeholder">Confirmar Contraseña</label>
                     <br>
                     <button type="submit" name="clave">Actualizar Contraseña</button>
+                </form>
 
-                    <!-- Subir tatuajes -->
+                <!-- Subir tatuajes -->
+                <form action="" method="post" enctype="multipart/form-data">
                      <h2>SUBIR TATUAJES</h2>
                     <label for="tatuajes">Tatuajes</label>
-                    <input type="file" name="tatuajes[]" id="tatuajes" multiple>
+                    <input type="file" name="tatuajes[]" id="tatuajes" accept="image/*" multiple required>
                     <br>
                     <button type="submit" name="subir_tatuajes">Subir Tatuajes</button>
                 </form>

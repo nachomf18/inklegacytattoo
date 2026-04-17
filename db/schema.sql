@@ -28,13 +28,3 @@ CREATE TABLE mensajes (
     id_tatuador INT NOT NULL,
     FOREIGN KEY (id_tatuador) REFERENCES tatuadores(id)
 );
-
-CREATE TABLE citas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    telefono VARCHAR(255) NOT NULL,
-    fecha DATETIME NOT NULL,
-    id_tatuador INT NOT NULL,
-    FOREIGN KEY (id_tatuador) REFERENCES tatuadores(id)
-);
