@@ -8,7 +8,7 @@ CREATE TABLE tatuadores (
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT NOT NULL,
     estilo VARCHAR(255) NOT NULL,
-    instagram VARCHAR(255) NOT NULL,
+    instagram VARCHAR(255) NOT NULL,    
     imagen VARCHAR(255) NOT NULL
 );
 
