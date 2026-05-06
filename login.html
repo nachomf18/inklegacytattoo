@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <form action="" method="post">
+        <h2>INICIAR SESIÓN</h2>
+        <p id="error"></p>
+        <br>
+        <input type="email" id="email" name="email" required>
+        <label for="email" class="placeholder">Correo electrónico</label>
+        <br>
+        <input type="password" id="password" name="password" required>
+        <label for="password" class="placeholder">Contraseña</label>
+        <br>
+        <button type="submit" value="Iniciar Sesión">Iniciar Sesión</button>
+    </form>
+
+    <script src="assets/js/validarEmail.js"></script>
+    <script>
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            await fetch("ajax/login.php", {
+                method: "POST",
+                body: formData
+            }).then(response => response.text())
+            .then(mensaje => {
+                if (mensaje === "TRUE") {
+                    window.location.href = "index.html";
+                } else {
+                    const p = document.getElementById("error");
+                    p.style.color = "red";
+                    p.textContent = "Correo electrónico o contraseña incorrectos";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -14,3 +14,13 @@ document.getElementById('menu-icon').addEventListener('click', function() {
         navLinks.style.height = '0';
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    comprobarSesion().then(mensaje => {
+        if (mensaje === "TRUE") {
+            const ul = document.querySelector('nav ul');
+            ul.children[5].style.display = 'block';
+            ul.children[6].style.display = 'block';
+        }
+    })
+});

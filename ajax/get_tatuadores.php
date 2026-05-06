@@ -9,3 +9,5 @@ if ($tatuadores) {
 } else {
     echo json_encode([]);
 }
+
+?>
