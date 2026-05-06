@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
-    <?php require "header.php"; ?>
+
 
     <main>
         <section>
@@ -205,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
     </main>
 
-    <?php require "footer.php"; ?>
+
 
     <script src="assets/js/form.js"></script>
 </body>

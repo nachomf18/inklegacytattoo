@@ -76,10 +76,10 @@ function delete_tatuaje($id) {
     return $query->execute(array($id));
 }
 
-function insert_mensaje($name, $email, $asunto, $mensaje, $tatuador) {
+function insert_mensaje($nombre, $email, $asunto, $mensaje, $tatuador) {
     global $db;
     $query = $db->prepare("INSERT INTO mensajes (nombre, email, asunto, mensaje, id_tatuador) VALUES (?, ?, ?, ?, ?)");
-    return $query->execute(array($name, $email, $asunto, $mensaje, $tatuador));
+    return $query->execute(array($nombre, $email, $asunto, $mensaje, $tatuador));
 }
 
 function get_mensajes($id_tatuador) {
