@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", async function() {
     const contenedorImg = document.querySelector('.carrusel-images');
-    const tatuadores = await fetch("ajax/get_tatuadores.php").then(response => response.json());
+    const tatuadores = await fetch("ajax/tatuadores.php").then(response => response.json());
 
+    // Cargar tatuadores y sus tatuajes en el carrusel
     await Promise.all(tatuadores.map(async tatuador => {
         const tatuajes = await getTatuajes(tatuador.id);
         if (tatuajes && tatuajes.length !== 0) {
             const link = document.createElement("a");
-            link.href = "perfilartista.php?id=" + tatuador.id;
+            link.href = "perfilartista.html?id=" + tatuador.id;
 
             const img = document.createElement("img");
             img.src = tatuajes[0].ruta;
@@ -17,11 +18,13 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }));
 
+    // Función para obtener tatuajes de un tatuador
     async function getTatuajes(id) {
-        const tatuajes = await fetch("ajax/get_tatuajes.php?id=" + id).then(response => response.json());
+        const tatuajes = await fetch("ajax/tatuajes.php?id=" + id).then(response => response.json());
         return tatuajes;
     }
 
+    // Lógica del carrusel
     const listaImg = contenedorImg.querySelectorAll('a');
     const btnIzq = document.getElementById('left');
     const btnDer = document.getElementById('right');

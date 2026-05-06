@@ -16,9 +16,9 @@
                 <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
                 <li><a href="artistas.html">ARTISTAS</a></li>
                 <li><a href="contacto.html">CONTACTO</a></li>
-                <li style="display: none;"><a href="login.html">ÁREA DE TATUADORES</a></li>
+                <li><a href="login.html">ÁREA DE TATUADORES</a></li>
                 <li style="display: none;"><a href="perfil.html">MI PERFIL</a></li>
-                <li style="display: none;"><a href="logout.html">CERRAR SESIÓN</a></li>
+                <li style="display: none;"><a href="#" id="logout">CERRAR SESIÓN</a></li>
             </ul>
             <img src="./assets/img/menu.svg" alt="Abrir menú de navegación" id="menu-icon" height="40">
         </nav>
@@ -58,7 +58,7 @@
                 </div>
     
                 <div class="form">
-                    <form action="enviar_formulario.php" method="POST">
+                    <form action="" method="post">
                         <input type="text" id="name" name="name" required>
                         <label for="name" class="placeholder">Nombre y apellidos *</label>
                         <br>
@@ -108,8 +108,8 @@
         </div>
     </footer>
 
+    <script src="./assets/js/sesion.js"></script>
     <script src="./assets/js/navBar.js"></script>
-    <script src="./assets/js/form.js"></script>
-    <script src="./assets/js/validarEmail.js"></script>
+    <script src="./assets/js/contacto.js"></script>
 </body>
 </html>

@@ -20,28 +20,6 @@
         <button type="submit" value="Iniciar Sesión">Iniciar Sesión</button>
     </form>
 
-    <script src="assets/js/validarEmail.js"></script>
-    <script>
-        const form = document.querySelector("form");
-        form.addEventListener("submit", async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(form);
-
-            await fetch("ajax/login.php", {
-                method: "POST",
-                body: formData
-            }).then(response => response.text())
-            .then(mensaje => {
-                if (mensaje === "TRUE") {
-                    window.location.href = "index.html";
-                } else {
-                    const p = document.getElementById("error");
-                    p.style.color = "red";
-                    p.textContent = "Correo electrónico o contraseña incorrectos";
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/login.js"></script>
 </body>
 </html>

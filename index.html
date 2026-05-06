@@ -18,7 +18,7 @@
                 <li><a href="contacto.html">CONTACTO</a></li>
                 <li><a href="login.html">ÁREA DE TATUADORES</a></li>
                 <li style="display: none;"><a href="perfil.html">MI PERFIL</a></li>
-                <li style="display: none;"><a href="logout.html">CERRAR SESIÓN</a></li>
+                <li style="display: none;"><a href="#" id="logout">CERRAR SESIÓN</a></li>
             </ul>
             <img src="./assets/img/menu.svg" alt="Abrir menú de navegación" id="menu-icon" height="40">
         </nav>
@@ -149,33 +149,6 @@
 
     <script src="./assets/js/sesion.js"></script>
     <script src="./assets/js/navBar.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("ajax/get_tatuadores.php")
-            .then(response => response.json())
-            .then(tatuadores => {
-                tatuadores.forEach(tatuador => {
-                    let div = document.createElement("div");
-                    div.classList.add("artist");
-
-                    let link = document.createElement("a");
-                    link.href = "perfilartista.php?id=" + tatuador.id;
-
-                    let img = document.createElement("img");
-                    img.src = tatuador.imagen;
-                    img.alt = "Retrato de " + tatuador.nombre + ", tatuador especialista en " + tatuador.estilo;
-                    link.appendChild(img);
-
-                    let textDiv = document.createElement("div");
-                    textDiv.classList.add("text");
-                    textDiv.innerHTML = tatuador.nombre.toUpperCase() + "<br><h4>" + tatuador.estilo.toUpperCase() + "</h4>";
-                    
-                    div.appendChild(link);
-                    div.appendChild(textDiv);
-                    document.getElementById("artist_images").appendChild(div);
-                });
-            });
-        });
-    </script>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
