@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 require "db/db_connection.php";
 require "db/comprobar_sesion.php";
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }   
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,8 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
-
-
     <main>
         <section>
             <h1>MI PERFIL</h1> 
@@ -123,19 +121,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <th width="40%">MENSAJE</th>
                             <th>ACCIONES</th>
                         </tr>
-                        <?php foreach ($mensajes as $mensaje) { ?>
-                            <tr>
-                                <td><?= $mensaje['nombre'] ?></td>
-                                <td><?= $mensaje['email'] ?></td>
-                                <td><?= $mensaje['asunto'] ?></td>
-                                <td><?= $mensaje['mensaje'] ?></td>
-                                <td>
-                                    <form action="eliminar_mensaje.php" method="post">
-                                        <button type="submit" name="id" value="<?= $mensaje['id'] ?>">Eliminar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php } ?>
                     </table>
                 </div>
 
@@ -143,31 +128,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="datos">
                         <div class="datos-personales">
-                            <?php if (isset($ok)) { ?>
-                                <h3 style="color: var(--old-gold);"><?= $ok ?></h3>
-                            <?php } elseif (isset($error)) { ?>
-                                <h3 style="color: var(--blood-red);"><?= $error ?></h3>
-                            <?php } ?>
                             <h2>DATOS PERSONALES</h2>
-                            <input type="text" id="nombre" name="nombre" value="<?= $tatuador['nombre'] ?>" required>
+                            <input type="text" id="nombre" name="nombre" required>
                             <label for="nombre" class="placeholder">Nombre</label>
                             <br>
-                            <input type="email" id="email" name="email" value="<?= $tatuador['email'] ?>" required>
+                            <input type="email" id="email" name="email" required>
                             <label for="email" class="placeholder">Email</label>
                             <br>
-                            <input type="text" id="estilo" name="estilo" value="<?= $tatuador['estilo'] ?>" required>
+                            <input type="text" id="estilo" name="estilo" required>
                             <label for="estilo" class="placeholder">Estilo</label>
                             <br>
-                            <input type="text" id="instagram" name="instagram" value="<?= $tatuador['instagram'] ?>" required>
+                            <input type="text" id="instagram" name="instagram" required>
                             <label for="instagram" class="placeholder">Instagram</label>
                             <br>
                             <label for="descripcion">Descripción</label><br>
-                            <textarea id="descripcion" name="descripcion" rows="4" cols="50" required><?= $tatuador['descripcion'] ?></textarea>
+                            <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
                             <br>
                             <button type="submit" name="perfil">Actualizar Perfil</button>
                         </div>
                         <div class="foto">
-                            <img src="<?= $tatuador["imagen"] ?>" alt="">
+                            <img src="" alt="">
                             <input type="file" name="imagen" id="imagen" accept="image/*">
                         </div>
                     </div>
@@ -194,19 +174,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit" name="subir_tatuajes">Subir Tatuajes</button>
                 </form>
 
-                <div class="galeria">
-                    <?php foreach ($tatuajes as $tatuaje) { ?>
-                        <a href="eliminar_tatuaje.php?id=<?= $tatuaje['id'] ?>">
-                            <img src="<?= $tatuaje['ruta'] ?>" alt="Tatuaje" width="100px" height="100px">
-                        </a>
-                    <?php } ?>
-                </div>
+                <div class="galeria"></div>
             </div>   
         </section>
     </main>
 
-
-
-    <script src="assets/js/form.js"></script>
+    <script src="assets/js/miperfil.js"></script>
 </body>
 </html>
