@@ -2,7 +2,7 @@
 
 require "../db/db_connection.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     $id = $_GET["id"];
     
     $tatuadores = get_tatuajes($id);

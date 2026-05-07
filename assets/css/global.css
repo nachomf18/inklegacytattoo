@@ -237,6 +237,12 @@ input:valid + .placeholder {
     transition: all 0.3s ease-in-out;
 }
 
+input:disabled + .placeholder {
+    transform: translateY(-70px);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
 textarea:focus{
     outline: none;
     background-image: repeating-linear-gradient(to bottom, transparent, transparent 38px, var(--old-gold) 40px);

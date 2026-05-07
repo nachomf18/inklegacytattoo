@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Validar email
-    function validarEmail(email) {
-        const emailInput = document.getElementById("email");
+    const emailInput = document.getElementById("email");
+    if (emailInput) {
         emailInput.addEventListener("input", () =>  {
             const placeholder = emailInput.nextElementSibling;
             if (emailInput.value !== "") {

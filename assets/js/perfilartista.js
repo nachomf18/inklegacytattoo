@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Cargar información del tatuador
-    fetch("ajax/perfil_artista.php?id=" + id)
+    fetch("ajax/tatuadores.php?id=" + id)
     .then(response => response.json())
     .then(tatuador => {
         if (tatuador) {

@@ -1,12 +1,21 @@
 <?php
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "inklegacy";
+$env_file = __DIR__ . '/../.env';
+if (file_exists($env_file)) {
+    $env_vars = parse_ini_file($env_file);
+    foreach ($env_vars as $key => $value) {
+        $_ENV[$key] = $value;
+    }
+}
+
+$host = $_ENV['DB_HOST'];
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$database = $_ENV['DB_NAME'];
+$port = $_ENV['DB_PORT'];
 
 try {
-    $db = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+    $db = new PDO("mysql:host=$host;port=$port;dbname=$database", $username, $password);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
@@ -38,10 +47,10 @@ function insert_tatuador($email, $clave, $nombre, $descripcion, $estilo, $instag
     return $query->execute(array($email, $clave, $nombre, $descripcion, $estilo, $instagram, $imagen));
 }
 
-function update_tatuador($email, $nombre, $descripcion, $estilo, $instagram, $imagen, $id) {
+function update_tatuador($id, $nombre, $descripcion, $estilo, $instagram, $imagen) {
     global $db;
-    $query = $db->prepare("UPDATE tatuadores SET email = ?, nombre = ?, descripcion = ?, estilo = ?, instagram = ?, imagen = ? WHERE id = ?");
-    return $query->execute(array($email, $nombre, $descripcion, $estilo, $instagram, $imagen, $id));
+    $query = $db->prepare("UPDATE tatuadores SET nombre = ?, descripcion = ?, estilo = ?, instagram = ?, imagen = ? WHERE id = ?");
+    return $query->execute(array($nombre, $descripcion, $estilo, $instagram, $imagen, $id));
 }
 
 function update_clave($clave, $id) {

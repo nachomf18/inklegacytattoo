@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
             div.classList.add("artist");
 
             let link = document.createElement("a");
-            link.href = "perfilartista.php?id=" + tatuador.id;
+            link.href = "perfilartista.html?id=" + tatuador.id;
 
             let img = document.createElement("img");
             img.src = tatuador.imagen;
