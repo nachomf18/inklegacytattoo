@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($tatuador && password_verify($password, $tatuador["clave"])) {
         session_start();
-        $_SESSION["usuario"] = $tatuador;
+        $_SESSION["id_tatuador"] = $tatuador["id"];
         echo "TRUE";
     } else {
         echo "FALSE";

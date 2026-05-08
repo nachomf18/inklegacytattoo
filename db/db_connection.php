@@ -22,7 +22,7 @@ try {
 
 function get_tatuadores() {
     global $db;
-    $query = $db->prepare("SELECT * FROM tatuadores");
+    $query = $db->prepare("SELECT id, email, nombre, descripcion, estilo, instagram, imagen FROM tatuadores");
     $query->execute();
     return $query->fetchAll();
 }
@@ -36,7 +36,7 @@ function get_tatuador_by_email($email) {
 
 function get_tatuador_by_id($id) {
     global $db;
-    $query = $db->prepare("SELECT * FROM tatuadores WHERE id = ?");
+    $query = $db->prepare("SELECT id, email, nombre, descripcion, estilo, instagram, imagen FROM tatuadores WHERE id = ?");
     $query->execute(array($id));
     return $query->fetch();
 }
@@ -103,3 +103,5 @@ function delete_mensaje($id) {
     $query = $db->prepare("DELETE FROM mensajes WHERE id = ?");
     return $query->execute(array($id));
 }
+
+?>

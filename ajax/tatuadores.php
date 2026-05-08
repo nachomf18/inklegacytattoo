@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     } else {
         echo json_encode([]);
     }
-} else  {
+} else {
     $tatuadores = get_tatuadores();
     
     if ($tatuadores) {

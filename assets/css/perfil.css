@@ -15,11 +15,48 @@ h1 {
     text-align: center;
 }
 
-table {
+.tabla-mensajes {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.tabla-mensajes th {
+    background: var(--carbon-black);
+    color: var(--bone-white);
+    padding: 15px;
+    text-align: left;
+}
+
+.tabla-mensajes td {
+    padding: 15px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabla-mensajes tr:hover {
+    background-color: #f9f9f9;
+    transition: background-color 0.2s ease;
+}
+
+.tabla-mensajes tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-mensajes button {
+    background-color: var(--blood-red);
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.tabla-mensajes button:hover {
+    background-color: #8B0000;
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .datos {

@@ -1,13 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     // Comprobar sesión para mostrar u ocultar opciones del menú
-    comprobarSesion().then(mensaje => {
-        if (mensaje === "TRUE") {
-            const ul = document.querySelector('nav ul');
-            ul.children[4].style.display = 'none';
-            ul.children[5].style.display = 'block';
-            ul.children[6].style.display = 'block';
-        }
-    });
+    var sesion = await comprobarSesion();
+    if (sesion != "-1") {
+        const ul = document.querySelector('nav ul');
+        ul.children[4].style.display = 'none';
+        ul.children[5].style.display = 'block';
+        ul.children[6].style.display = 'block';
+    }
 
     // Manejar menú móvil
     document.getElementById('menu-icon').addEventListener('click', function() {
@@ -37,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ul.children[5].style.display = 'none';
                 ul.children[6].style.display = 'none';
                 alert("Sesión cerrada correctamente");
+                window.location.href = "index.html";
             }
         });
     });

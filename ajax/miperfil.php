@@ -3,10 +3,10 @@
 require "../db/db_connection.php";
 session_start();
 
-if (isset($_SESSION["usuario"])) {
-    $id = $_SESSION["usuario"]["id"];
+if (isset($_SESSION["id_tatuador"])) {
+    $id = $_SESSION["id_tatuador"];
 } else {
-    echo json_encode(["error" => "Usuario no autenticado"]);
+    echo json_encode(["success" => false, "error" => "Usuario no autenticado"]);
     exit;
 }
 
@@ -32,23 +32,30 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["opcion"])) {
         $instagram = $_POST["instagram"];
         $descripcion = $_POST["descripcion"];
         $imagen = $_FILES["imagen"]["name"];
-        $ruta_imagen = "../assets/img/tatuadores/" . $imagen;
-
+        $tatuador = get_tatuador_by_id($id);
+        
         if (!$imagen) {
-            $tatuador = get_tatuador_by_id($id);
             $ruta_imagen = $tatuador["imagen"];
+        } else {
+            $extension = pathinfo($imagen, PATHINFO_EXTENSION);
+            $nombre_unico = uniqid() . '.' . $extension;
+            $ruta_imagen = "/assets/img/tatuadores/" . $nombre_unico;
+            
+            if (file_exists("../" . $tatuador["imagen"])) {
+                unlink("../" . $tatuador["imagen"]);
+            }
         }
         
         if(update_tatuador($id, $nombre, $descripcion, $estilo, $instagram, $ruta_imagen)) {
             if ($_FILES["imagen"]["tmp_name"]) {
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta_imagen);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../" . $ruta_imagen);
             }
             echo "TRUE";
         } else {
             echo "FALSE";
         }
     } elseif ($opcion === "actualizar_clave") {
-        $clave = password_hash($_POST["clave"], PASSWORD_DEFAULT);
+        $clave = password_hash($_POST["password"], PASSWORD_DEFAULT);
         if(update_clave($clave, $id)) {
             echo "TRUE";
         } else {
@@ -62,11 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["opcion"])) {
             $error_upload = $_FILES["tatuajes"]["error"][$index];
             
             if ($error_upload == 0) {                
-                $ruta = "../assets/img/tatuajes/" . basename($nombre_archivo);
+                $extension = pathinfo($nombre_archivo, PATHINFO_EXTENSION);
+                $nombre_unico = uniqid() . '.' . $extension;
+                $ruta = "/assets/img/tatuajes/" . $nombre_unico;
 
-                if (!file_exists($ruta)) {
-                    if (move_uploaded_file($tmpName, $ruta)) {
-                        if(!insert_tatuaje($ruta, $_SESSION['usuario']['id'])) {
+                if (!file_exists("../" . $ruta)) {
+                    if (move_uploaded_file($tmpName, "../" . $ruta)) {
+                        if(!insert_tatuaje($ruta, $id)) {
                             $errors[] = "Error al guardar el archivo " . $nombre_archivo . " en la base de datos.";
                         }
                     } else {

@@ -47,6 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Botón para volver a la página de artistas
     document.getElementById("backButton").addEventListener("click", function() {
-        window.location.href = "artistas.html";
+        window.history.back();
     });
 });

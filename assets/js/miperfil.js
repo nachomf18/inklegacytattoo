@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", async function() {
+    var sesion = await comprobarSesion();
+    if (sesion == "-1") {
+        window.location.href = "login.html";
+        return;
+    }
+
     var tatuador = await getTatuador();
     var tatuajes = await getTatuajes();
     var mensajes = await getMensajes();
@@ -21,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (mensaje == "TRUE") {
                 this.reset();
                 p.innerText = "Perfil actualizado correctamente.";
+                p.style.color = "var(--carbon-black)";
                 p.style.marginBottom = "40px";
                 tatuador = await getTatuador();
                 mostrarTatuador(tatuador);
@@ -53,6 +60,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             p.innerHTML = "";
             if (mensaje == "TRUE") {
                 p.innerText = "Contraseña actualizada correctamente.";
+                p.style.color = "var(--carbon-black)";
                 p.style.marginBottom = "40px";
             } else {
                 p.innerText = "Error al actualizar la contraseña.";
@@ -126,15 +134,16 @@ document.addEventListener("DOMContentLoaded", async function() {
         const galeria = document.querySelector(".galeria");
         galeria.innerHTML = "";
         tatuajes.forEach(tatuaje => {
-            const enlace = document.createElement("a");
-            enlace.href = `eliminar_tatuaje.php?id=${tatuaje.id}`;
             const imagen = document.createElement("img");
             imagen.src = tatuaje.ruta;
-            imagen.alt = "Tatuaje";
+            imagen.alt = "Tatuaje de " + tatuador.nombre;
             imagen.width = 100;
             imagen.height = 100;
-            enlace.appendChild(imagen);
-            galeria.appendChild(enlace);
+            imagen.addEventListener("click", function() {
+                eliminarTatuaje(tatuaje.id);
+            });
+
+            galeria.appendChild(imagen);
         });
     }
 
@@ -150,6 +159,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
 
         const table = document.createElement("table");
+        table.classList.add("tabla-mensajes");
         let tr = document.createElement("tr");
 
         let nombre = document.createElement("th");
@@ -170,33 +180,68 @@ document.addEventListener("DOMContentLoaded", async function() {
         tr.appendChild(eliminar);
         table.appendChild(tr);
 
-        mensajes.forEach(mensaje => {
+        mensajes.forEach(msg => {
             tr = document.createElement("tr");
 
             nombre = document.createElement("td");
             email = document.createElement("td");
             asunto = document.createElement("td");
-            mensaje = document.createElement("td");
+            let mensajeTexto = document.createElement("td");
             eliminar = document.createElement("td");
-            nombre.innerText = mensaje.nombre;
-            email.innerText = mensaje.email;
-            asunto.innerText = mensaje.asunto;
-            mensaje.innerText = mensaje.mensaje;
+            nombre.innerText = msg.nombre;
+            email.innerText = msg.email;
+            asunto.innerText = msg.asunto;
+            mensajeTexto.innerText = msg.mensaje;
             let btnEliminar = document.createElement("button");
             btnEliminar.innerText = "ELIMINAR";
             btnEliminar.addEventListener("click", function() {
-                eliminarMensaje(mensaje.id);
+                eliminarMensaje(msg.id);
             });
             eliminar.appendChild(btnEliminar);
 
             tr.appendChild(nombre);
             tr.appendChild(email);
             tr.appendChild(asunto);
-            tr.appendChild(mensaje);
+            tr.appendChild(mensajeTexto);
             tr.appendChild(eliminar);
             table.appendChild(tr);
         });
 
         document.getElementById("mensajes").appendChild(table);
+    }
+
+    async function eliminarTatuaje(id) {
+        if (!confirm("¿Estás seguro de que quieres eliminar este tatuaje?")) {
+            return;
+        } else {
+            await fetch("ajax/eliminar_tatuaje.php?id=" + id)
+            .then(response => response.text())
+            .then(async mensaje => {
+                if (mensaje == "TRUE") {
+                    tatuajes = await getTatuajes();
+                    mostrarTatuajes(tatuajes);
+                    numTatuajes = tatuajes.length;
+                } else {
+                    alert("Error al eliminar el tatuaje.");
+                }
+            });
+        }
+    }
+
+    async function eliminarMensaje(id) {
+        if (!confirm("¿Estás seguro de que quieres eliminar este mensaje?")) {
+            return;
+        } else {
+            await fetch("ajax/eliminar_mensaje.php?id=" + id)
+            .then(response => response.text())
+            .then(async mensaje => {
+                if (mensaje == "TRUE") {
+                    mensajes = await getMensajes();
+                    mostrarMensajes(mensajes);
+                } else {
+                    alert("Error al eliminar el mensaje.");
+                }
+            });
+        }
     }
 });

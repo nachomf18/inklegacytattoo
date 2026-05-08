@@ -1,103 +1,3 @@
-<!-- <?php
-
-require "db/db_connection.php";
-require "db/comprobar_sesion.php";
-
-$tatuador = get_tatuador_by_id($_SESSION['user_id']);
-$tatuajes = get_tatuajes($_SESSION['user_id']);
-$num_tatuajes = count($tatuajes);
-$mensajes = get_mensajes($_SESSION['user_id']);
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["perfil"])) {
-        $nombre = $_POST["nombre"];
-        $email = $_POST["email"];
-        $estilo = $_POST["estilo"];
-        $instagram = $_POST["instagram"];
-        $descripcion = $_POST["descripcion"];
-
-        if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
-            $ruta = "assets/img/tatuadores/" . basename($_FILES["imagen"]["name"]);
-            move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
-        } else {
-            $ruta = $tatuador["imagen"];
-        }  
-        
-        $tatuador_existente = get_tatuador_by_email($email);
-
-        if ($tatuador_existente && $tatuador_existente['id'] != $_SESSION['user_id']) {
-            $error = "El email introducido ya está registrado.";
-        } else {
-            $query = update_tatuador($email, $nombre, $descripcion, $estilo, $instagram, $ruta, $_SESSION['user_id']);
-            if ($query) {
-                $tatuador = get_tatuador_by_id($_SESSION['user_id']);
-                $ok = "Perfil actualizado correctamente.";
-            } else {
-                $error = "Error al actualizar el perfil.";
-            }
-        }
-    }
-
-    if (isset($_POST["clave"])) {
-        $password = $_POST["password"];
-        $confirmar_password = $_POST["confirmar_password"];
-
-        if ($password === $confirmar_password) {
-            $query = update_clave(password_hash($password, PASSWORD_DEFAULT), $_SESSION['user_id']);
-            if ($query) {
-                $ok = "Contraseña actualizada correctamente.";
-            } else {
-                $error = "Error al actualizar la contraseña.";
-            }
-        } else {
-            $error = "Las contraseñas no coinciden.";
-        }
-    }
-
-    if (isset($_POST["subir_tatuajes"])) {
-        if ((count($_FILES["tatuajes"]["tmp_name"]) + $num_tatuajes) <= 9) {
-            if ($_FILES["tatuajes"]["name"][0] != "") {
-                foreach ($_FILES["tatuajes"]["tmp_name"] as $index => $tmpName) {
-                    if ($_FILES["tatuajes"]["error"][$index] == 0) {
-                        if (!dir("assets/img/tatuajes/")) {
-                            mkdir("assets/img/tatuajes/", 0777, true);
-                        }
-
-                        $ruta = "assets/img/tatuajes/" . basename($_FILES["tatuajes"]["name"][$index]);
-
-                        if (!file_exists($ruta)) {
-                            if (move_uploaded_file($tmpName, $ruta)) {
-                                if(!insert_tatuaje($ruta, $_SESSION['user_id'])) {
-                                    $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . " en la base de datos.";
-                                }
-                            } else {
-                                $errors[] = "Error al guardar el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
-                            }
-                        } else {
-                            $errors[] = "El archivo " . $_FILES["tatuajes"]["name"][$index] . " ya existe.";
-                        }
-                    } else {
-                        $errors[] = "Error al subir el archivo " . $_FILES["tatuajes"]["name"][$index] . ".";
-                    }
-                }
-
-                if (empty($errors)) {
-                    $ok = "Tatuajes subidos correctamente.";
-                    $tatuajes = get_tatuajes($_SESSION['user_id']);
-                } else {
-                    $error = implode("<br>", $errors);
-                }
-            } else {
-                $error = "No se han seleccionado archivos para subir.";
-            }
-        } else {
-            $error = "Solo puedes tener 9 imagenes en total. Elimina algunas para subir nuevas.";
-        }
-    }
-}   
-
-?> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,6 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
     </main>
 
+    <script src="assets/js/sesion.js"></script>
+    <script src="assets/js/navBar.js"></script>
     <script src="assets/js/miperfil.js"></script>
 </body>
 </html>

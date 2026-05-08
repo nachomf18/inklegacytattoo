@@ -28,3 +28,5 @@ CREATE TABLE mensajes (
     id_tatuador INT NOT NULL,
     FOREIGN KEY (id_tatuador) REFERENCES tatuadores(id)
 );
+
+UPDATE tatuadores SET descripcion = REPLACE(descripcion, '<br>', '\n') WHERE id = 1;

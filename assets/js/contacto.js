@@ -25,11 +25,12 @@ document.addEventListener("DOMContentLoaded", async function() {
             body: formData
         }).then(response => response.text())
         .then(data => {
-            const mensaje = document.createElement("p");
+            const mensaje = document.getElementById("mensaje");
+            mensaje.innerHTML = "";
             mensaje.style.marginTop = "20px";
             mensaje.style.fontSize = "1em";
             mensaje.textContent = data;
-            form.appendChild(mensaje);
+            form.reset();
         });
     });
 
