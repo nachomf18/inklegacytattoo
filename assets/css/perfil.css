@@ -107,3 +107,22 @@ h1 {
     transform: scale(1.02);
     transition: transform 0.3s ease;
 }
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .datos {
+        grid-template-columns: 1fr;
+    }
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .datos {
+        grid-template-columns: 1fr;
+    }
+    .galeria {
+        grid-template-columns: 1fr 1fr;
+    }
+}

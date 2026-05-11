@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 p.innerText = "Contraseña actualizada correctamente.";
                 p.style.color = "var(--carbon-black)";
                 p.style.marginBottom = "40px";
+                this.reset();
             } else {
                 p.innerText = "Error al actualizar la contraseña.";
                 p.style.color = "var(--blood-red)";
@@ -73,15 +74,19 @@ document.addEventListener("DOMContentLoaded", async function() {
     document.getElementById("form-tatuajes").addEventListener("submit", async function(e) {
         e.preventDefault();
 
+        const div = document.getElementById("mensaje-tatuajes");
+        div.innerHTML = "";
         if (this.tatuajes.files.length == 0) {
-            const p = document.getElementById("mensaje-tatuajes");
+            const p = document.createElement("p");
             p.innerText = "Por favor, selecciona al menos un tatuaje para subir.";
             p.style.color = "var(--blood-red)";
+            div.appendChild(p);
             return;
         } else if (this.tatuajes.files.length + numTatuajes > 9) {
-            const p = document.getElementById("mensaje-tatuajes");
+            const p = document.createElement("p");
             p.innerText = "No puedes subir más de 9 tatuajes.";
             p.style.color = "var(--blood-red)";
+            div.appendChild(p);
             return;
         }
 
@@ -97,6 +102,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                 tatuajes = await getTatuajes();
                 mostrarTatuajes(tatuajes);
                 numTatuajes = tatuajes.length;
+                this.reset();
+                const p = document.createElement("p");
+                p.innerText = "Tatuajes subidos correctamente.";
+                p.style.color = "var(--carbon-black)";
+                div.appendChild(p);
             } else {
                 data.errors.forEach(error => {
                     let errorP = document.createElement("p");

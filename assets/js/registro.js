@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
     var sesion = await comprobarSesion();
-    console.log("Valor de sesion:", sesion);
     if (sesion != "1") {
         window.location.href = "login.html";
         return;
@@ -17,18 +16,16 @@ document.addEventListener('DOMContentLoaded', async function() {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
-        .then(mensaje => {
-            if (mensaje === "TRUE") {
-                pError.style.color = "var(--old-gold)";
+        .then(response => response.json())
+        .then(data => {
+            pError.innerHTML = "";
+            if (data.success) {
+                pError.style.color = "var(--carbon-black)";
                 pError.textContent = "Tatuador registrado exitosamente.";
                 form.reset();
-            } else if (mensaje === "FALSE_DUPLICADO") {
-                pError.style.color = "var(--blood-red)";
-                pError.textContent = "Este correo electrónico ya está registrado.";
             } else {
                 pError.style.color = "var(--blood-red)";
-                pError.textContent = "Ha ocurrido un error al registrar el tatuador. Por favor, inténtalo de nuevo.";
+                pError.textContent = data.error;
             }
         });
     });

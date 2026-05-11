@@ -274,7 +274,7 @@ textarea:focus{
         padding: 0 20px;
         align-items: center;
         height: 0;
-        overflow: hidden;
+        overflow: auto;
     }
 
     @keyframes open-menu {

@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', async function() {
     // Comprobar sesión para mostrar u ocultar opciones del menú
     var sesion = await comprobarSesion();
+    const ul = document.querySelector('nav ul');
     if (sesion != "-1") {
-        const ul = document.querySelector('nav ul');
         ul.children[4].style.display = 'none';
         ul.children[5].style.display = 'block';
         ul.children[6].style.display = 'block';
+    }
+    if (sesion == "1") {
+        const li = document.createElement("li");
+        li.innerHTML = '<a href="registro.html">REGISTRO</a>';
+        ul.appendChild(li);
     }
 
     // Manejar menú móvil
